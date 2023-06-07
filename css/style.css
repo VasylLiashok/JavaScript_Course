@@ -1,0 +1,48 @@
+.lesson {
+  padding-bottom: 60px;
+}
+.lesson__container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.lesson__title {
+  text-align: center;
+}
+.lesson__body {
+}
+.lesson__row {
+}
+.lesson__subtitle {
+}
+.lesson__row-1 {
+}
+.math-actions-table {
+  border: 1px solid #000;
+}
+.math-actions-table td {
+  border: 1px solid #000;
+}
+
+.check {
+}
+.check__row {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 10px;
+}
+.check__name {
+}
+.check__cost {
+}
+.check__quantity {
+}
+.check__value {
+}
+.check__row-total {
+}
+.check__total {
+  font-weight: 700;
+}
+.total-cost {
+  font-weight: 700;
+}

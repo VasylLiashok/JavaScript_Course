@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 2</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 2</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-0">
+            <h4 class="lesson__subtitle">Task 0</h4>
+          </div>
+          <div class="lesson__row lesson__row-1">
+            <h4 class="lesson__subtitle">Task 1</h4>
+            <table class="math-actions-table">
+              <thead>
+                <tr>
+                  <td>Summ</td>
+                  <td>Multiplication</td>
+                  <td>Division</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="t1 summ"></td>
+                  <td class="t1 multi"></td>
+                  <td class="t1 div"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="lesson__row lesson__row-2">
+            <h4 class="lesson__subtitle">Task 2</h4>
+          </div>
+          <div class="lesson__row lesson__row-3">
+            <h4 class="lesson__subtitle">Task 3</h4>
+          </div>
+          <div class="lesson__row lesson__row-4">
+            <h4 class="lesson__subtitle">Task 4</h4>
+          </div>
+          <div class="lesson__row lesson__row-5">
+            <h4 class="lesson__subtitle">Task 5</h4>
+          </div>
+          <div class="lesson__row lesson__row-6">
+            <h4 class="lesson__subtitle">Task 6</h4>
+          </div>
+          <div class="lesson__row lesson__row-7">
+            <h4 class="lesson__subtitle">Task 7</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      /*!Task 0*/
+      const task0 = document.querySelector(".lesson__row-0");
+      let a = parseInt(prompt("Type a", "1"));
+      let b = parseInt(prompt("Type b", "1"));
+      let c = parseInt(prompt("Type c", "1"));
+      //1.
+      let S1 = a + 12 + b;
+      task0.innerHTML += `<div>1. S1=a+12+b= ${S1}</div>`;
+      //2.
+      let result1 = (a + b) / (2 * a);
+      let S2 = Math.sqrt(result1);
+      task0.innerHTML += `<div>2. ${S2}</div>`;
+      //3.
+      let result2 = (a + b) * c;
+      let S3 = Math.cbrt(result2);
+      task0.innerHTML += `<div>3. ${S3}</div>`;
+      //4.
+      let result3 = a / -b;
+      let S4 = Math.sin(result3);
+      task0.innerHTML += `<div>4. ${S4}</div>`;
+      // //========================================================================================================================================================
+      /*!Task 1*/
+      //Summ
+      let summ = a + b;
+      const summResult = document.querySelector(".t1.summ");
+      summResult.innerHTML = summ;
+      //Multiplication
+      let miltiplication = a * b;
+      const miltiplicationResult = document.querySelector(".t1.multi");
+      miltiplicationResult.innerHTML = miltiplication;
+      //Multiplication
+      let division = a / b;
+      const divisionResult = document.querySelector(".t1.div");
+      divisionResult.innerHTML = division;
+      // //========================================================================================================================================================
+      /*!Task 2*/
+      let bithdayYear = parseInt(prompt("Type your birthday Year", "1992"));
+      let currentYear = 2023;
+      let age = currentYear - bithdayYear;
+      const ageResult = document.querySelector(".lesson__row-2");
+      ageResult.innerHTML += `<div>Your age is ${age}</div>`;
+      //========================================================================================================================================================
+      /*!Task 3*/
+      let productPrice = parseFloat(prompt("Type poduct price", "23.45"));
+      let productCount = parseInt(prompt("Type product count", "10"));
+      let totalPrice = productPrice * productCount;
+      const VAT = 5;
+      let vatCount = (totalPrice * 5) / 100;
+      const products = document.querySelector(".lesson__row-3");
+      products.innerHTML += `<div>Total price is ${totalPrice}</div><div>VAT is ${vatCount}</div>`;
+      //========================================================================================================================================================
+      /*!Task 4*/
+      let sm = parseInt(prompt("Type sm", "45"));
+      let metr = sm * 0.01;
+      let km = sm * 0.00001;
+      const length = document.querySelector(".lesson__row-4");
+      length.innerHTML += `<div>Sm in m is ${metr}</div><div>Sm in km is ${km}</div>`;
+      //========================================================================================================================================================
+      /*!Task 5*/
+      let seconds = parseInt(prompt("Type seconds from 00:00", "7200"));
+      let minutes = seconds / 60;
+      let hours = seconds / 3600;
+      const time = document.querySelector(".lesson__row-5");
+      time.innerHTML += `<div>Seconds in minutes is ${minutes}</div><div>Seconds in hours is ${hours}</div>`;
+      //========================================================================================================================================================
+      /*!Task 6*/
+      let product1Cost = parseFloat(prompt("Type product1 cost", "898"));
+      let product1Quantity = parseFloat(prompt("Type product1 quantity", "2"));
+      let product2Cost = parseFloat(prompt("Type product2 cost", "898"));
+      let product2Quantity = parseFloat(prompt("Type product1 quantity", "2"));
+      let product3Cost = parseFloat(prompt("Type product3 cost", "898"));
+      let product3Quantity = parseFloat(prompt("Type product1 quantity", "2"));
+      let product1TotalCost = product1Cost * product1Quantity;
+      let product2TotalCost = product2Cost * product2Quantity;
+      let product3TotalCost = product3Cost * product3Quantity;
+      let productsTotalCost =
+        product1TotalCost + product2TotalCost + product3TotalCost;
+      const check = document.querySelector(".lesson__row-6");
+      check.innerHTML += `
+      	<div class="check">
+      		<div class="check__row">
+      			<div class="check__name">Product1</div>
+      			<div class="check__cost">${product1Cost}</div>
+      			<div class="check__quantity">${product1Quantity}</div>
+      			<div class="check__value">${product1TotalCost}</div>
+      		</div>
+      		<div class="check__row">
+      			<div class="check__name">Product2</div>
+      			<div class="check__cost">${product2Cost}</div>
+      			<div class="check__quantity">${product2Quantity}</div>
+      			<div class="check__value">${product2TotalCost}</div>
+      		</div>
+      		<div class="check__row">
+      			<div class="check__name">Product3</div>
+      			<div class="check__cost">${product3Cost}</div>
+      			<div class="check__quantity">${product3Quantity}</div>
+      			<div class="check__value">${product3TotalCost}</div>
+      		</div>
+      		<div class="check__row check__row-total">
+      			<div class="check__total">TOTAL</div>
+      			<div class="total-cost">${productsTotalCost}</div>
+      		</div>
+      	 </div>
+      	 `;
+      //========================================================================================================================================================
+      /*!Task 6*/
+      let month = Math.floor(Math.random() * (13 - 1)) + 1;
+      let day = Math.floor(Math.random() * 7);
+      let monthDaySumm = month + day;
+      const monthDayResult = document.querySelector(".lesson__row-7");
+      monthDayResult.innerHTML += `<div>Random result is ${monthDaySumm}</div>`;
+    </script>
+  </body>
+</html>
