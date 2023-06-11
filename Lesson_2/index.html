@@ -105,7 +105,7 @@
       let productCount = parseInt(prompt("Type product count", "10"));
       let totalPrice = productPrice * productCount;
       const VAT = 5;
-      let vatCount = (totalPrice * 5) / 100;
+      let vatCount = (totalPrice * VAT) / 100;
       const products = document.querySelector(".lesson__row-3");
       products.innerHTML += `<div>Total price is ${totalPrice}</div><div>VAT is ${vatCount}</div>`;
       //========================================================================================================================================================
@@ -169,6 +169,15 @@
       let monthDaySumm = month + day;
       const monthDayResult = document.querySelector(".lesson__row-7");
       monthDayResult.innerHTML += `<div>Random result is ${monthDaySumm}</div>`;
+      //========================================================================================================================================================
+
+      // let day = parseInt(prompt("day", "1"));
+      // let countDay = parseInt(prompt("dayNew", "3"));
+      // let newDay = (day + countDay) % 7;
+      // console.log(newDay);
+      // let year = 1900;
+      // let century = parseInt((year - 1) / 100 + 1);
+      // console.log(century);
     </script>
   </body>
 </html>

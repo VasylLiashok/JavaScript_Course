@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 3</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 3</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-4">
+            <h4 class="lesson__subtitle">Task 4</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 4
+      //З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).
+      let userAge = parseInt(prompt("Your age", ""));
+      const kindergardenAge = 3;
+      const schoolAge = 6;
+      const scholarshipAge = 17;
+      const workerAge = 22;
+      const retairAge = 66;
+      let userStatus;
+      if (userAge >= kindergardenAge && userAge <= schoolAge) {
+        userStatus = "дитина у садочку";
+      } else if (userAge >= schoolAge && userAge <= scholarshipAge) {
+        userStatus = "школяр";
+      } else if (userAge >= scholarshipAge && userAge <= workerAge) {
+        userStatus = "студент";
+      } else if (userAge >= workerAge && userAge <= retairAge) {
+        userStatus = "працівник";
+      } else if (userAge >= retairAge) {
+        userStatus = "пенсіонер";
+      } else if (userAge <= kindergardenAge) {
+        userStatus = "You are to young";
+      } else {
+        userStatus = "incorrect age";
+      }
+      const userStatusRow = document.querySelector(".lesson__row-4");
+      userStatusRow.innerHTML += `Your age status is ${userStatus}`;
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

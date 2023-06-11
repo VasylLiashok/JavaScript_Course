@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 3</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 3</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-5">
+            <h4 class="lesson__subtitle">Task 5</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 5
+      // З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.
+      let driverCategory = prompt("Your driver category is?", "").toUpperCase();
+      let vehicle;
+      switch (driverCategory) {
+        case "A":
+          vehicle = "мотоцикл";
+          break;
+        case "B":
+          vehicle = "легковий автомобіль";
+          break;
+        case "C":
+          vehicle = "вантажний автомобіль";
+          break;
+        default:
+          vehicle = "invalid driver category";
+          break;
+      }
+      const driverCategoryRow = document.querySelector(".lesson__row-5");
+      driverCategoryRow.innerHTML += `Your can drive on ${vehicle}`;
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

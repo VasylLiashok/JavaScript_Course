@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 3</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 3</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-1">
+            <h4 class="lesson__subtitle">
+              <a href="./Task 1.html">Task 1</a>
+            </h4>
+          </div>
+          <div class="lesson__row lesson__row-2">
+            <h4 class="lesson__subtitle">
+              <a target="_blank" href="./Task 2.html">Task 2</a>
+            </h4>
+          </div>
+          <div class="lesson__row lesson__row-3">
+            <h4 class="lesson__subtitle">
+              <a target="_blank" href="./Task 3.html">Task 3</a>
+            </h4>
+          </div>
+          <div class="lesson__row lesson__row-4">
+            <h4 class="lesson__subtitle">
+              <a target="_blank" href="./Task 4.html">Task 4</a>
+            </h4>
+          </div>
+          <div class="lesson__row lesson__row-5">
+            <h4 class="lesson__subtitle">
+              <a target="_blank" href="./Task 5.html">Task 5</a>
+            </h4>
+          </div>
+          <div class="lesson__row lesson__row-6">
+            <h4 class="lesson__subtitle">
+              <a target="_blank" href="./Task 6.html">Task 6</a>
+            </h4>
+          </div>
+          <div class="lesson__row lesson__row-7">
+            <h4 class="lesson__subtitle">
+              <a target="_blank" href="./Task 7.html">Task 7</a>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      // //Task 1
+      // /*З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.*/
+      // let firstChildName = prompt("Enter first child name", "");
+      // let firstChildCandyCount = parseInt(
+      //   prompt("Enter first child candies count", "")
+      // );
+      // let secondChildName = prompt("Enter second child name", "");
+      // let secondChildCandyCount = parseInt(
+      //   prompt("Enter second child candies count", "")
+      // );
+      // let result;
+      // if (firstChildCandyCount > secondChildCandyCount) {
+      //   result = `${firstChildName} has more candies`;
+      // } else if (secondChildCandyCount > firstChildCandyCount) {
+      //   result = `${secondChildName} has more candies`;
+      // } else if (firstChildCandyCount === secondChildCandyCount) {
+      //   result = "Candies count is equal";
+      // }
+      // const candyResult = document.querySelector(".lesson__row-1");
+      // candyResult.innerHTML += `<div>${result}</div>`;
+      //========================================================================================================================================================
+      // // //Task 2
+      // // З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.
+      // let productPice = parseFloat(prompt("Enter product price", ""));
+      // let moneyCount = parseFloat(prompt("Enter money count", ""));
+      // const lotteryPrice = 4;
+      // const lotteryResult = document.querySelector(".lesson__row-2");
+      // if (moneyCount < productPice) {
+      //   lotteryResult.innerHTML +=
+      //     "Sorry, you have no enough funds for this product";
+      // } else {
+      //   lotteryResult.innerHTML += "<div>You can buy our product</div>";
+      //   if (moneyCount - productPice >= lotteryPrice) {
+      //     lotteryResult.innerHTML += "<div>Buy our lottery ticket</div>";
+      //   }
+      // }
+
+      //========================================================================================================================================================
+      // //Task 3
+      // // Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
+      // let randomNumber = Math.floor(Math.random() * (5 - 1)) + 1;
+      // let firstNumber = parseInt(prompt("Your first try", ""));
+      // let guessNumberResult;
+      // if (firstNumber === randomNumber) {
+      //   guessNumberResult = "Great, your number is correct!";
+      // } else {
+      //   alert("You have one more try");
+      //   let secondNumber = parseInt(prompt("Your second try", ""));
+      //   if (secondNumber === randomNumber) {
+      //     guessNumberResult = "Great, your number is correct!";
+      //   } else {
+      //     guessNumberResult = "Sorry, your game is over";
+      //   }
+      // }
+      // alert(guessNumberResult);
+      // const guessNumberResultRow = document.querySelector(".lesson__row-3");
+      // guessNumberResultRow.innerHTML += `${guessNumberResult}`;
+      //========================================================================================================================================================
+      // //Task 4
+      // //З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).
+      // let userAge = parseInt(prompt("Your age", ""));
+      // const kindergardenAge = 3;
+      // const schoolAge = 6;
+      // const scholarshipAge = 17;
+      // const workerAge = 22;
+      // const retairAge = 66;
+      // let userStatus;
+      // if (userAge >= kindergardenAge && userAge <= schoolAge) {
+      //   userStatus = "дитина у садочку";
+      // } else if (userAge >= schoolAge && userAge <= scholarshipAge) {
+      //   userStatus = "школяр";
+      // } else if (userAge >= scholarshipAge && userAge <= workerAge) {
+      //   userStatus = "студент";
+      // } else if (userAge >= workerAge && userAge <= retairAge) {
+      //   userStatus = "працівник";
+      // } else if (userAge >= retairAge) {
+      //   userStatus = "пенсіонер";
+      // } else if (userAge <= kindergardenAge) {
+      //   userStatus = "You are to young";
+      // } else {
+      //   userStatus = "incorrect age";
+      // }
+      // const userStatusRow = document.querySelector(".lesson__row-4");
+      // userStatusRow.innerHTML += `Your age status is ${userStatus}`;
+      //========================================================================================================================================================
+      // //Task 5
+      // // З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.
+      // let driverCategory = prompt("Your driver category is?", "").toUpperCase();
+      // let vehicle;
+      // switch (driverCategory) {
+      //   case "A":
+      //     vehicle = "мотоцикл";
+      //     break;
+      //   case "B":
+      //     vehicle = "легковий автомобіль";
+      //     break;
+      //   case "C":
+      //     vehicle = "вантажний автомобіль";
+      //     break;
+      //   default:
+      //     vehicle = "invalid driver category";
+      //     break;
+      // }
+      // const driverCategoryRow = document.querySelector(".lesson__row-5");
+      // driverCategoryRow.innerHTML += `Your can drive on ${vehicle}`;
+      //========================================================================================================================================================
+      // //Task 6
+      // //З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
+      // let dayNumber = parseInt(prompt("Current day number is", ""));
+      // let dayName;
+      // switch (dayNumber) {
+      //   case 1:
+      //     dayName = "Monday";
+      //     break;
+      //   case 2:
+      //     dayName = "Tuesday";
+      //     break;
+      //   case 3:
+      //     dayName = "Wednesday";
+      //     break;
+      //   case 4:
+      //     dayName = "Thursday";
+      //     break;
+      //   case 5:
+      //     dayName = "Friday";
+      //     break;
+      //   case 6:
+      //     dayName = "Saturday";
+      //     break;
+      //   case 7:
+      //     dayName = "Sunday";
+      //     break;
+      //   default:
+      //     dayName = "invalid day number";
+      //     break;
+      // }
+      // const dayNameRow = document.querySelector(".lesson__row-6");
+      // dayNameRow.innerHTML += `It is ${dayName}`;
+      //========================================================================================================================================================
+      // //Task 7
+      // //З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+      // let monthNumber = parseInt(prompt("Current month number is", ""));
+      // let seasonName;
+
+      // switch (monthNumber) {
+      //   case 1:
+      //   case 2:
+      //   case 12:
+      //     seasonName = "Winter";
+      //     break;
+      //   case 3:
+      //   case 4:
+      //   case 5:
+      //     seasonName = "Spring";
+      //     break;
+      //   case 6:
+      //   case 7:
+      //   case 8:
+      //     seasonName = "Summer";
+      //     break;
+      //   case 9:
+      //   case 10:
+      //   case 11:
+      //     seasonName = "Autumn";
+      //     break;
+      //   default:
+      //     seasonName = "invalid season number";
+      //     break;
+      // }
+      // const seasonNameRow = document.querySelector(".lesson__row-7");
+      // seasonNameRow.innerHTML += `It is ${seasonName}`;
+    </script>
+  </body>
+</html>

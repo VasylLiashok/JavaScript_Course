@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 3</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 3</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-1">
+            <h4 class="lesson__subtitle">Task 1</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      // //Task 1
+      // /*З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.*/
+      let firstChildName = prompt("Enter first child name", "");
+      let firstChildCandyCount = parseInt(
+        prompt("Enter first child candies count", "")
+      );
+      let secondChildName = prompt("Enter second child name", "");
+      let secondChildCandyCount = parseInt(
+        prompt("Enter second child candies count", "")
+      );
+      let result;
+      if (firstChildCandyCount > secondChildCandyCount) {
+        result = `${firstChildName} has more candies`;
+      } else if (secondChildCandyCount > firstChildCandyCount) {
+        result = `${secondChildName} has more candies`;
+      } else if (firstChildCandyCount === secondChildCandyCount) {
+        result = "Candies count is equal";
+      }
+      const candyResult = document.querySelector(".lesson__row-1");
+      candyResult.innerHTML += `<div>${result}</div>`;
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

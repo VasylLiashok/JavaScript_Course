@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 3</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 3</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-3">
+            <h4 class="lesson__subtitle">Task 3</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 3
+      // Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
+      let randomNumber = Math.floor(Math.random() * (5 - 1)) + 1;
+      let firstNumber = parseInt(prompt("Your first try", ""));
+      let guessNumberResult;
+      if (firstNumber === randomNumber) {
+        guessNumberResult = "Great, your number is correct!";
+      } else {
+        alert("You have one more try");
+        let secondNumber = parseInt(prompt("Your second try", ""));
+        if (secondNumber === randomNumber) {
+          guessNumberResult = "Great, your number is correct!";
+        } else {
+          guessNumberResult = "Sorry, your game is over";
+        }
+      }
+      alert(guessNumberResult);
+      const guessNumberResultRow = document.querySelector(".lesson__row-3");
+      guessNumberResultRow.innerHTML += `${guessNumberResult}`;
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>
