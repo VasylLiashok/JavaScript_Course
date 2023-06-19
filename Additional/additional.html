@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Additional homework</title>
+    <script>
+      //========================================================================================================================================================
+      // //1.
+      // let menuNumber = parseInt(prompt("1. Веселий 2. Сумний 3. Обурений", ""));
+      // let smileIcon;
+      // switch (menuNumber) {
+      //   case 1:
+      //     smileIcon = "&#128512";
+      //     break;
+      //   case 2:
+      //     smileIcon = "&#129321";
+      //     break;
+      //   case 3:
+      //     smileIcon = "&#129322";
+      //     break;
+
+      //   default:
+      //     smileIcon = "&#128512";
+      //     break;
+      // }
+      // alert(smileIcon);
+      //========================================================================================================================================================
+      // //2.
+      // let userNumber = parseInt(prompt("your number", ""));
+      // let startPosition = Math.floor(Math.random() * (100 - 1)) + 1;
+      // let endPosition =
+      //   Math.floor(Math.random() * (100 - startPosition)) + startPosition;
+      // if (userNumber <= endPosition + 10 && userNumber >= startPosition - 10) {
+      //   alert("Congrats");
+      // } else {
+      //   alert("You loose");
+      // }
+      // console.log(startPosition);
+      // console.log(endPosition);
+      //========================================================================================================================================================
+      // //3.
+      // let randomNumber = Math.floor(Math.random() * (10 - 1)) + 1;
+      // let firstUserNumber = parseInt(prompt("first user number", ""));
+      // let secondUserNumber = parseInt(prompt("second user number", ""));
+      // console.log(firstUserNumber);
+      // console.log(secondUserNumber);
+      // console.log(randomNumber);
+      // let firstUserResult = Math.abs(firstUserNumber - randomNumber);
+      // let secondUserResult = Math.abs(secondUserNumber - randomNumber);
+      // if (firstUserResult === secondUserResult) {
+      //   alert("You both are right");
+      // } else {
+      //   if (firstUserResult < secondUserResult) {
+      //     alert("First user win");
+      //   } else {
+      //     alert("Second user win");
+      //   }
+      // }
+      //========================================================================================================================================================
+      // // 4.
+      // let fieldLength = parseInt(prompt("Your game field length is", ""));
+      // let shipPosition = Math.floor(Math.random() * (fieldLength - 1)) + 1;
+      // console.log(shipPosition);
+      // let userShot = parseInt(prompt("Your target is", ""));
+      // if (userShot === shipPosition) {
+      //   alert("Your enemy is dead. Game over");
+      // } else if (
+      //   userShot === shipPosition + 1 ||
+      //   userShot === shipPosition - 1
+      // ) {
+      //   alert("Your enemy is wounded. One more try");
+      //   let secondShot = parseInt(prompt("Your target is", ""));
+      //   if (secondShot === shipPosition) {
+      //     alert("Your enemy is dead. Game over");
+      //   } else {
+      //     alert("Your enemy hide, you lose. Game over");
+      //   }
+      // } else {
+      //   alert("You miss. One more try");
+
+      //   let newPosition = shipPosition + Math.floor(Math.random() * -1);
+      //   console.log(newPosition);
+      //   let secondShot = parseInt(prompt("Your target is", ""));
+      //   if (secondShot === newPosition) {
+      //     alert("Your enemy is dead. Game over");
+      //   } else {
+      //     alert("Your enemy hide, you lose. Game over");
+      //   }
+      // }
+      //========================================================================================================================================================
+      // //5.
+      // let rowChoice = 1 || 2;
+      // let columnChoice = 1 || 2;
+      // let rowEnteredNumber = parseInt(prompt("Your game field row is", ""));
+      // let columnEnteredNumber = parseInt(
+      //   prompt("Your game field column is", "")
+      // );
+      // let fieldfirstChoiceRow =
+      //   rowEnteredNumber === rowChoice ? rowEnteredNumber : 2;
+      // let fieldfirstChoiceColumn =
+      //   columnEnteredNumber === columnChoice ? columnEnteredNumber : 2;
+      // let rabbitNewRowPosition = Math.floor(Math.random() * (2 - 1)) + 1;
+      // let rabbitNewColumnPosition = Math.floor(Math.random() * (2 - 1)) + 1;
+
+      // if (
+      //   fieldfirstChoiceRow === rabbitNewRowPosition &&
+      //   fieldfirstChoiceColumn === rabbitNewColumnPosition
+      // ) {
+      //   alert("You got the rabbit and get 100points");
+      // } else {
+      //   alert("You missed the rabbit");
+      //   let rowSecondEnteredNumber = parseInt(
+      //     prompt("Your game field row is", "")
+      //   );
+      //   let columnSecondEnteredNumber = parseInt(
+      //     prompt("Your game field column is", "")
+      //   );
+      //   let fieldSecondtChoiceRow =
+      //     rowSecondEnteredNumber === rowChoice ? rowSecondEnteredNumber : 2;
+      //   let fieldSecondChoiceColumn =
+      //     columnSecondEnteredNumber === columnChoice
+      //       ? columnSecondEnteredNumber
+      //       : 2;
+      //   let rabbitSecondRowPosition = Math.floor(Math.random() * (2 - 1)) + 1;
+      //   let rabbitSecondColumnPosition =
+      //     Math.floor(Math.random() * (2 - 1)) + 1;
+      //   if (
+      //     fieldSecondtChoiceRow === rabbitSecondRowPosition &&
+      //     fieldSecondChoiceColumn === rabbitSecondColumnPosition
+      //   ) {
+      //     alert("You got the rabbit and get 50points");
+      //   } else {
+      //     alert("Rabbit run away, you get 0 points");
+      //   }
+      // }
+      //========================================================================================================================================================
+      //7.
+      const startPoints = 0;
+      let firstGamerPoints = Math.floor(Math.random() * (6 - 1)) + 1;
+      let secondGamerPoints = Math.floor(Math.random() * (6 - 1)) + 1;
+      let firstPlayerNewPoints;
+      if (firstGamerPoints % 2 === 0) {
+        firstPlayerNewPoints = startPoints + firstGamerPoints;
+      } else {
+        firstPlayerNewPoints = startPoints - firstGamerPoints;
+      }
+      let secondPlayerNewPoints;
+      if (secondGamerPoints % 2 === 0) {
+        secondPlayerNewPoints = startPoints + secondGamerPoints;
+      } else {
+        secondPlayerNewPoints = startPoints - secondGamerPoints;
+      }
+      alert(`First player start points is ${firstPlayerNewPoints}`);
+      alert(`Second player start points is ${secondPlayerNewPoints}`);
+      let secondThrow = confirm("Do you want to make second throw?");
+      let firstPlayerFinalPoints;
+      let SecondPlayerFinalPoints;
+      if (secondThrow) {
+        let firstGamerSecondPoints = Math.floor(Math.random() * (6 - 1)) + 1;
+        let secondGamerSecondPoints = Math.floor(Math.random() * (6 - 1)) + 1;
+        if (firstGamerSecondPoints % 2 === 0) {
+          firstPlayerFinalPoints =
+            firstPlayerNewPoints + firstGamerSecondPoints;
+        } else {
+          firstPlayerFinalPoints =
+            firstPlayerNewPoints - firstGamerSecondPoints;
+        }
+        if (secondGamerSecondPoints % 2 === 0) {
+          SecondPlayerFinalPoints =
+            secondPlayerNewPoints + secondGamerSecondPoints;
+        } else {
+          secondPlayerNewPoints - secondGamerSecondPoints;
+        }
+        alert(`First player final points is ${firstPlayerFinalPoints}`);
+        alert(`Second player final points is ${SecondPlayerFinalPoints}`);
+      } else {
+        firstPlayerFinalPoints = firstPlayerNewPoints;
+        SecondPlayerFinalPoints = secondPlayerNewPoints;
+      }
+      if (firstPlayerFinalPoints > SecondPlayerFinalPoints) {
+        alert("First Player win");
+      } else if (firstPlayerFinalPoints < SecondPlayerFinalPoints) {
+        alert("Second Player win");
+      } else {
+        alert("Your points are equal");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

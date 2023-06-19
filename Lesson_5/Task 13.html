@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 5</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 5</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-7">
+            <h4 class="lesson__subtitle">Task 13</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 13
+      //Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель.
+
+      let fieldLength = parseInt(prompt("Enter field legth", "100"));
+      let fieldWidth = parseInt(prompt("Enter field width", "100"));
+      let shotCount = parseInt(prompt("Enter your shots count", "5"));
+      let shipLength = Math.floor(Math.random() * fieldLength) + 1;
+      let shipWidth = Math.floor(Math.random() * fieldWidth) + 1;
+      console.log(shipLength, shipWidth);
+      document.write(`Ship coordinates are ${shipLength} : ${shipWidth} <br>`);
+      let userShotLength;
+      let userShotWidth;
+      seaFight: for (let shot = 1; shot <= shotCount; shot++) {
+        userShotLength = parseInt(prompt(`Enter ship legth. Your ${shot} try`));
+        userShotWidth = parseInt(prompt(`Enter ship width. Your ${shot} try`));
+        if (userShotLength === shipLength && userShotWidth === shipWidth) {
+          alert("Enemy ship is down. You win!");
+        } else if (shot === shotCount - 1) {
+          alert("Your last try");
+        } else if (shot === shotCount) {
+          alert("You loose");
+        }
+        document.write(
+          `Your shots are ${userShotLength} : ${userShotWidth} <br>`
+        );
+      }
+
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

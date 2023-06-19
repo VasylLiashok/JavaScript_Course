@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 5</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 5</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-7">
+            <h4 class="lesson__subtitle">Task 16</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 16
+      //Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну величину прибутку та вивести величину прибутку протягом кожного окремого тижня.
+      let weeksCount = parseInt(prompt("Enter weeks count"));
+      let weeksumm = 0;
+      let totalsumm = 0;
+      for (let week = 1; week <= weeksCount; week++) {
+        for (let day = 1; day <= 7; day++) {
+          let userDayIncome = parseFloat(
+            prompt(`Enter your ${week} week ${day} day income`)
+          );
+          let dayIncome = userDayIncome ? userDayIncome : 0;
+          weeksumm += dayIncome;
+        }
+        totalsumm += weeksumm;
+        document.write(`You ${week} week income is ${weeksumm} <br>`);
+      }
+      document.write(`You total income is ${totalsumm}`);
+
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

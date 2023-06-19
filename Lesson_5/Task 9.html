@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 5</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 5</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-7">
+            <h4 class="lesson__subtitle">Task 9</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 9
+      //Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати confirm).
+      let userNumber = parseInt(prompt("Enter your number from 1 to 10"));
+      if (userNumber > 10) {
+        userNumber = 10;
+      } else if (userNumber < 1) {
+        userNumber = 1;
+      }
+      document.write(`Your number is ${userNumber} <br>`);
+      alert(`Your number is ${userNumber}`);
+      let computerNumber = 0;
+      let userConfirm;
+      do {
+        computerNumber = Math.floor(Math.random() * (11 - 1)) + 1;
+        userConfirm = confirm(
+          `Computer number is ${computerNumber}. Is this your number?`
+        );
+        document.write(`Computer number is ${computerNumber} <br>`);
+      } while (userConfirm === false);
+
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

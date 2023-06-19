@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 5</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 5</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-6">
+            <h4 class="lesson__subtitle">Task 6</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 6
+      //Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+      let count = 1;
+      for (let table = 0; table < 3; table++) {
+        document.write(
+          "<table style='border: 3px solid #000;display:inline-block; margin-right:20px'>"
+        );
+        for (let tablerow = 0; tablerow < 3; tablerow++) {
+          document.write("<tr>");
+          for (let index = 1; index <= 3; index++) {
+            document.write(
+              `<td style='border: 1px solid #000; width:20px; height:20px'>${count}</td>`
+            );
+            count++;
+          }
+          document.write("</tr>");
+        }
+        document.write("</table>");
+      }
+
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

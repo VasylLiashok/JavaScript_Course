@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 5</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 5</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-7">
+            <h4 class="lesson__subtitle">Task 14</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 14
+      //Каса. Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму потрібно ввести).
+      let totalSumm = Math.floor(Math.random() * 1000) + 1;
+
+      alert(`You should pay ${totalSumm}`);
+      let userMoneyContribution;
+      do {
+        userMoneyContribution = parseFloat(prompt("Enter money count"));
+        totalSumm -= userMoneyContribution;
+        if (totalSumm > 0) {
+          alert(`You should pay ${totalSumm}`);
+        } else if (totalSumm < 0) {
+          alert(`You payed too much. We will return you ${0 - totalSumm}`);
+        } else {
+          alert("Well done, you paied everything");
+        }
+      } while (totalSumm > 0);
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

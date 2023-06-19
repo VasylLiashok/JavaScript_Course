@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 5</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 5</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-7">
+            <h4 class="lesson__subtitle">Task 11</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 11
+      //Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.
+      let startPosition = parseInt(prompt("Enter start numbert", "1"));
+      let endPosition = parseInt(prompt("Enter end numbert", "100"));
+      let summ = 0;
+      let numberCount = 0;
+      numberCounter: for (
+        startPosition;
+        startPosition <= endPosition;
+        startPosition++
+      ) {
+        if (startPosition % 2 != 0) {
+          summ += startPosition;
+          numberCount++;
+          document.write(`${startPosition} <br>`);
+        }
+        console.log(numberCount);
+        if (numberCount === 5) {
+          break numberCounter;
+        }
+      }
+      document.write(`Summ is ${summ}`);
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

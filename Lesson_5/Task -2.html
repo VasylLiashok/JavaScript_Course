@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 5</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 5</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-1">
+            <h4 class="lesson__subtitle">Task -2</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      // //Task -2
+      // /*Поступово генерувати 100 випадкових чисел від 1 до 1000. Підрахувати яких чисел більше: парних чи непарних.*/
+      let oddNumber = 0;
+      let evenNumber = 0;
+      for (let i = 0; i < 100; i++) {
+        let randomNumber = Math.floor(Math.random() * (1000 - 1)) + 1;
+        if (randomNumber % 2 === 0) {
+          evenNumber++;
+        } else {
+          oddNumber++;
+        }
+        document.write(`${randomNumber}<br>`);
+      }
+      document.write(`oddNumber count is ${oddNumber}<br>`);
+      document.write(`evenNumber count is ${evenNumber}<br>`);
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

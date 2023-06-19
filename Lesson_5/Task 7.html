@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 5</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 5</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-7">
+            <h4 class="lesson__subtitle">Task 7</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 7
+      //Вивести на екран N абзаців (N вводиться користувачем) за зразком:
+      let titleCounter = parseInt(prompt("Enter paragraph count", "1"));
+      for (let index = 1; index <= titleCounter; index++) {
+        document.write(`
+        		<h1>Title ${index}</h1>
+        	`);
+        for (
+          let paragraphCount = 1;
+          paragraphCount <= index;
+          paragraphCount++
+        ) {
+          document.write(`
+          <p>Block ${index}, paragraph ${paragraphCount}</p>
+          `);
+        }
+        document.write("<hr>");
+      }
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

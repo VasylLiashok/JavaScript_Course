@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 5</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 5</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-7">
+            <h4 class="lesson__subtitle">Task 8</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      //Task 8
+      //Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).
+      let userNumber = parseInt(prompt("Enter your number from 1 to 10"));
+      if (userNumber > 10) {
+        userNumber = 10;
+      } else if (userNumber < 1) {
+        userNumber = 1;
+      }
+      document.write(`Your number is ${userNumber} <br>`);
+      alert(`Your number is ${userNumber}`);
+      guess: for (let index = 1; index <= 3; index++) {
+        let computerNumber = Math.floor(Math.random() * (11 - 1)) + 1;
+        let userConfirm = confirm(
+          `Computer ${index} try. His number is ${computerNumber}. Is this your number?`
+        );
+        document.write(
+          `Computer ${index} try. His number is ${computerNumber} <br>`
+        );
+        if (userConfirm) {
+          alert("Computer wins");
+          break guess;
+        } else if (index === 3) {
+          document.write("Computer loose");
+        }
+      }
+
+      /* Without confirm
+		guess: for (let index = 1; index <= 3; index++) {
+        let computerNumber = Math.floor(Math.random() * (10 - 1)) + 1;
+        document.write(
+          `Computer ${index} try. His number is ${computerNumber} <br>`
+        );
+        if (computerNumber === userNumber) {
+          alert("Computer wins");
+          break guess;
+        } else {
+          alert(`Computer ${index} try. His number is ${computerNumber}`);
+        }
+      }
+		*/
+
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>
