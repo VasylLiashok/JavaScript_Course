@@ -7,6 +7,23 @@
 		<link rel="stylesheet" href="../css/style.css" />
 
 		<title>Lesson 6</title>
+		<style>
+			td {
+				width: 7px;
+				height: 7px;
+				border: 1px solid #000;
+			}
+			table {
+				position: relative;
+				border-collapse: collapse;
+			}
+			table div {
+				width: 7px;
+				height: 7px;
+				position: absolute;
+				background: red;
+			}
+		</style>
 	</head>
 	<body>
 		<main class="lesson">
@@ -21,27 +38,80 @@
 		</main>
 		<script>
 			//========================================================================================================================================================
-			// //Task 0
-			//  Користувач загадує натуральне число від 1 до N. Шляхом задавання мінімальної кількості запитань знайти вказане число (застосувати бінарний пошук, на кожному кроці якого інтервал пошуку зменшується на 2 шляхом порівняння з елементом, який знаходиться у центрі поточного інтервалу).
-			let maxNumber = parseInt(prompt("Enter maxNumber"));
-			let startNumber = 1;
-			const randomNum = startNumber + Math.floor(Math.random() * (maxNumber - startNumber + 1));
-			let userNumber;
-			console.log(randomNum);
-			do {
-				userNumber = parseInt(prompt("Enter  your Number"));
+			// // //Task 0
+			// //  Користувач загадує натуральне число від 1 до N. Шляхом задавання мінімальної кількості запитань знайти вказане число (застосувати бінарний пошук, на кожному кроці якого інтервал пошуку зменшується на 2 шляхом порівняння з елементом, який знаходиться у центрі поточного інтервалу).
+			// let maxNumber = parseInt(prompt("Enter maxNumber"));
+			// let startNumber = 1;
+			// const randomNum = startNumber + Math.floor(Math.random() * (maxNumber - startNumber + 1));
+			// let userNumber;
+			// console.log(randomNum);
+			// do {
+			// 	userNumber = parseInt(prompt("Enter  your Number"));
 
-				if (randomNum !== userNumber) {
-					alert("Is that number bigger than half?");
-					let middleNumber = (maxNumber - startNumber + 1) / 2;
-					if (middleNumber < randomNum) {
-						alert(`Enter number from ${middleNumber} to ${maxNumber}`);
-						startNumber = middleNumber;
-					} else {
-						alert(`Enter number from ${startNumber} to ${middleNumber}`);
-					}
+			// 	if (randomNum !== userNumber) {
+			// 		alert("Is that number bigger than half?");
+			// 		let middleNumber = (maxNumber - startNumber + 1) / 2;
+			// 		if (middleNumber < randomNum) {
+			// 			alert(`Enter number from ${middleNumber} to ${maxNumber}`);
+			// 			startNumber = middleNumber;
+			// 		} else {
+			// 			alert(`Enter number from ${startNumber} to ${middleNumber}`);
+			// 		}
+			// 	}
+			// } while (randomNum !== userNumber);
+			//Танчики. На полі з 10 клітинок розміщують танк. За один крок танк може переміщуватися на відстань від 0 до 1 у  будь-якому напрямку (в межах поля). При влучанні броня танка пошкоджується на 30 балів (всього 100). Гра продовжується поки або не закінчаться снаряди (кількість вводиться з клавіатури) або не буде влучання. Спробуйте відоразити гру графічно.
+			let shots = parseInt(prompt("Enter shots count"));
+			let shotsCount = shots ? shots : 6;
+			let tankXCoordinate = 1 + Math.floor(Math.random() * (10 - 1 + 1));
+			let tankYCoordinate = 1 + Math.floor(Math.random() * (10 - 1 + 1));
+			let tankArmour = 100;
+			document.write(`<table>`);
+			for (let rows = 0; rows < 10; rows++) {
+				document.write(`<tr>`);
+				for (let column = 0; column < 10; column++) {
+					document.write(`<td></td>`);
 				}
-			} while (randomNum !== userNumber);
+				document.write(`</tr>`);
+			}
+			document.write(`</table>`);
+			const table = document.querySelector("table");
+
+			do {
+				let userXShotInput = parseInt(prompt(`Enter X Coordinate. Tank coordinate ${tankXCoordinate}-${tankYCoordinate}. Armour is ${tankArmour}`));
+				let userYShotInput = parseInt(prompt("Enter Y Coordinate"));
+				let userXShot = userXShotInput ? userXShotInput : 5;
+				let userYShot = userYShotInput ? userYShotInput : 5;
+
+				const div = document.createElement("div");
+				div.style = `top:${userYShot * 10 - 9}px; left:${userXShot * 10 - 9}px`;
+				table.appendChild(div);
+				if (tankXCoordinate === userXShot && tankYCoordinate === userYShot) {
+					if (tankArmour === 10) {
+						tankArmour -= 30;
+						alert("You win!");
+						break;
+					} else {
+						tankArmour -= 30;
+					}
+				} else {
+					alert("You miss");
+				}
+				shotsCount--;
+				if (shotsCount === 0) {
+					alert(`You have ${shotsCount} shots. Game over!`);
+					break;
+				} else {
+					alert(`You have ${shotsCount} shots left`);
+				}
+				tankXCoordinate =
+					tankXCoordinate + (-1 + Math.floor(Math.random() * (1 - -1 + 1))) >= 0
+						? tankXCoordinate + (-1 + Math.floor(Math.random() * (1 - -1 + 1)))
+						: tankXCoordinate;
+				tankYCoordinate =
+					tankYCoordinate + (-1 + Math.floor(Math.random() * (1 - -1 + 1))) >= 0
+						? tankYCoordinate + (-1 + Math.floor(Math.random() * (1 - -1 + 1)))
+						: tankYCoordinate;
+			} while (tankArmour > 0);
 			//=============================================================================================================================
 		</script>
 	</body>
