@@ -30,19 +30,30 @@
 				let evenNumber = 0;
 				let plusNumber = 0;
 				let moreOneHundredNumber = 0;
-				num1 % 2 === 0 ? evenNumber++ : null;
-				num2 % 2 === 0 ? evenNumber++ : null;
-				num3 % 2 === 0 ? evenNumber++ : null;
-				num1 > 0 ? plusNumber++ : null;
-				num2 > 0 ? plusNumber++ : null;
-				num3 > 0 ? plusNumber++ : null;
-				num1 > 100 ? moreOneHundredNumber++ : null;
-				num2 > 100 ? moreOneHundredNumber++ : null;
-				num3 > 100 ? moreOneHundredNumber++ : null;
+				getEvenNumber(num1);
+				getEvenNumber(num2);
+				getEvenNumber(num3);
+				getPlusNumber(num1);
+				getPlusNumber(num2);
+				getPlusNumber(num3);
+				getBigNumber(num1);
+				getBigNumber(num2);
+				getBigNumber(num3);
+
 				document.write(
 					`кількість парних - ${evenNumber},<br> кількість додатних - ${plusNumber},<br> кількість більших за 100 - ${moreOneHundredNumber}`
 				);
+				function getEvenNumber(num) {
+					num % 2 === 0 ? evenNumber++ : null;
+				}
+				function getPlusNumber(num) {
+					num > 0 ? plusNumber++ : null;
+				}
+				function getBigNumber(num) {
+					num > 100 ? moreOneHundredNumber++ : null;
+				}
 			}
+
 			giveNumberInfo(firstNumber, secondNumber, thirdNumber);
 			//========================================================================================================================================================
 		</script>
