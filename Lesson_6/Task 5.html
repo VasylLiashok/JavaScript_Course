@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Lesson 6</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <div class="lesson__container">
+        <h1 class="lesson__title">Lesson 6</h1>
+        <div class="lesson__body">
+          <div class="lesson__row lesson__row-1">
+            <h4 class="lesson__subtitle">Task 5</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      //========================================================================================================================================================
+      // //Task 5
+      // Інвестор вклав  тис. грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він одержить (без оподаткування).
+      let monetoryContribution = parseFloat(prompt("Сума вкладу"));
+      const yearPercentage = 0.2;
+      let yearIncome = 0;
+      for (let year = 0; year < 20; year++) {
+        yearIncome += monetoryContribution * yearPercentage;
+      }
+      let totalIncome = yearIncome + monetoryContribution;
+      alert(`Total income for 20 year is ${totalIncome}`);
+      //========================================================================================================================================================
+    </script>
+  </body>
+</html>

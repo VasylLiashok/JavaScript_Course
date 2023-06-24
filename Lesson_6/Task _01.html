@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 6</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 6</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task _01</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task _01
+			// З клавіатури вводяться числа до тих пір, поки послідовність є зростаючою або спадною.
+			let firstNumber = 0;
+			let secondNumber = 0;
+			let newNumber;
+			do {
+				// secondNumber = newNumber;
+				newNumber = parseInt(prompt("Enter your number"));
+				console.log(secondNumber);
+				console.log(newNumber);
+			} while (newNumber > secondNumber > firstNumber || newNumber < secondNumber < firstNumber);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 6</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 6</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 12</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 12
+			// Написати програму виведення на екран кожного символу латинського алфавіту та поруч з кожним з них символу, що передує йому та що слідує за ним.
+
+			for (let index = 65; index <= 90; index++) {
+				if (index !== 65) {
+					document.write(`${String.fromCharCode(index - 1)}&nbsp`);
+				}
+				document.write(`${String.fromCharCode(index)}&nbsp`);
+				if (index !== 90) {
+					document.write(`${String.fromCharCode(index + 1)}`);
+				}
+				document.write(`<br>`);
+			}
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
