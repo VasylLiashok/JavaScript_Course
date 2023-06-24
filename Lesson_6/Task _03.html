@@ -14,20 +14,20 @@
 				<h1 class="lesson__title">Lesson 6</h1>
 				<div class="lesson__body">
 					<div class="lesson__row lesson__row-1">
-						<h4 class="lesson__subtitle">Task _02</h4>
+						<h4 class="lesson__subtitle">Task 0</h4>
 					</div>
 				</div>
 			</div>
 		</main>
 		<script>
 			//========================================================================================================================================================
-			// //Task _02
-			// Знайти суму цифр числа, що знаходяться між першою цифрою 7 і останньою цифрою 7 (у числі є всього дві цифри 7, наприклад: 2679328712)
-			for (let index = 0; index < 5; index++) {
-				for (let letter = 0; letter < 5; letter++) {
-					document.write(`${String.fromCharCode(65 + index + letter)}`);
+			// //Task 03
+			// Дано ціле число N. Вивести ті натуральні числа, квадрати яких є меншими або рівними за N.
+			const number = parseInt(prompt("Enter number"));
+			for (let index = 0; index < number; index++) {
+				if (Math.pow(index, 2) <= number) {
+					document.write(`${index}<br>`);
 				}
-				document.write(`<br>`);
 			}
 			//========================================================================================================================================================
 		</script>

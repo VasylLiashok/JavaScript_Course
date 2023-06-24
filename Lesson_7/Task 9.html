@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 7</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 7</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 9</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 9
+			// Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.
+			let temperatureMeaserumentCount = parseInt(prompt("Enter temperature measurement count"));
+			temperatureCount(temperatureMeaserumentCount);
+			function temperatureCount(num) {
+				let plusTemperatureCount = 0;
+				let minusTemperatureCount = 0;
+				for (let index = 0; index < num; index++) {
+					let randomNum = -20 + Math.floor(Math.random() * (41 - -20 + 1));
+
+					if (randomNum >= 0) {
+						plusTemperatureCount++;
+					} else {
+						minusTemperatureCount++;
+					}
+				}
+				document.write(`Кількість позитивних показників - ${plusTemperatureCount}<br> Кількість від’ємних показників - ${minusTemperatureCount} `);
+			}
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

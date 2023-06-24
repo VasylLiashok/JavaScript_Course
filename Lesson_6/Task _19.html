@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 6</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 6</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 18</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 0
+			//  Користувач загадує натуральне число від 1 до N. Шляхом задавання мінімальної кількості запитань знайти вказане число (застосувати бінарний пошук, на кожному кроці якого інтервал пошуку зменшується на 2 шляхом порівняння з елементом, який знаходиться у центрі поточного інтервалу).
+			let maxNumber = parseInt(prompt("Enter maxNumber"));
+			let startNumber = 1;
+			const randomNum = startNumber + Math.floor(Math.random() * (maxNumber - startNumber + 1));
+			let userNumber;
+			console.log(randomNum);
+			do {
+				userNumber = parseInt(prompt("Enter  your Number"));
+
+				if (randomNum !== userNumber) {
+					alert("Is that number bigger than half?");
+					let middleNumber = (maxNumber - startNumber + 1) / 2;
+					if (middleNumber < randomNum) {
+						alert(`Enter number from ${middleNumber} to ${maxNumber}`);
+						startNumber = middleNumber;
+					} else {
+						alert(`Enter number from ${startNumber} to ${middleNumber}`);
+					}
+				}
+			} while (randomNum !== userNumber);
+			//=============================================================================================================================
+		</script>
+	</body>
+</html>

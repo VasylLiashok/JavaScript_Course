@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 7</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 7</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 2
+			// Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.
+			let dayNumber = parseInt(prompt("Enter day number", "5"));
+			dayMarker(dayNumber);
+			function dayMarker(day) {
+				let result;
+				if (1 <= day && day <= 5) {
+					result = "Work day";
+				} else if (day <= 7) {
+					result = "Weekend";
+				} else result = "Wrong day";
+				alert(`${result}`);
+			}
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

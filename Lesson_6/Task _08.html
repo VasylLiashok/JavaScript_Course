@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 6</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 6</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 0</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 0
+			// Щоденно спортзал відвідує певна кількість людей. Користувач вводить такі дані: скільки людей відвідало спортзал за день та вік кожного відвідувача. Потрібно вивести вік найстаршого та наймолодшого відвідувачів, а також середній вік всіх відвідувачів спортзалу за день.
+			let visitorCount = parseInt(prompt("Enter visitor count"));
+			let maxAge = -Infinity;
+			let minAge = Infinity;
+			let totalAge = 0;
+			for (let index = 1; index <= visitorCount; index++) {
+				let visitorAge = parseInt(prompt(`Enter ${index} visitor age`));
+				if (visitorAge > maxAge) {
+					maxAge = visitorAge;
+				}
+				if (visitorAge < minAge) {
+					minAge = visitorAge;
+				}
+				totalAge += visitorAge;
+			}
+			const averageAge = totalAge / visitorCount;
+			document.write(`averageAge is ${averageAge}. Max age is ${maxAge}. Min age is ${minAge}`);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

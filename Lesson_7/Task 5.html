@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 7</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 7</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 5</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 5
+			// Створити окремі функції, які переводять:
+			/*Сантиметри у дюйми;
+			Кілограми у фунти;
+			Кілометри у милі.*/
+			let santimeteres = parseInt(prompt("Enter santimetr"));
+			let kilograms = parseFloat(prompt("Enter kilograms"));
+			let kilometers = parseInt(prompt("Enter kilometers"));
+			const inchInSm = 2.54;
+			const poundInKg = 2.205;
+			const milesInKm = 0.625;
+			let getInchFromSm = (sm) => sm / inchInSm;
+			let getPoundFromKg = (kg) => kg * poundInKg;
+			let getMilesFromKm = (km) => km * milesInKm;
+			document.write(
+				`${santimeteres} сантиметрів це ${getInchFromSm(santimeteres)} дюймів<br>${kilograms} кілограмів це ${getPoundFromKg(
+					kilograms
+				)} фунтів<br>${kilometers} кілометрів це ${getMilesFromKm(kilometers)} миль<br> `
+			);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

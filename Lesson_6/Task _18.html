@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 6</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 6</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 18</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 0
+			// Є n бактерій червоного кольору. Через 1 одиницю часу червона бактерія змінюється на зелену, потім ще через 1 одиницю часу ділиться на червону та зелену. Скільки буде всіх бактерій через k одиниць часу?
+			let bacteriaCount = parseInt(prompt("Enter bacteria count"));
+			let time = parseInt(prompt("Enter your time"));
+			for (let index = 0; index < time / 2; index++) {
+				bacteriaCount *= 2;
+			}
+			alert(`${bacteriaCount}`);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

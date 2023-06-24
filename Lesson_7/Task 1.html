@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 7</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 7</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 1
+			// Створити функцію, яка за номером місяця повертає його назву.
+			let monthNumber = parseInt(prompt("Enter month number", "5"));
+			seasonName(monthNumber);
+			function seasonName(monthNumber) {
+				let result;
+				switch (monthNumber) {
+					case 3:
+						result = "Березень";
+						break;
+					case 4:
+						result = "Квітень";
+						break;
+					case 5:
+						result = "Травень";
+						break;
+					case 6:
+						result = "Червень";
+						break;
+					case 7:
+						result = "Липень";
+						break;
+					case 8:
+						result = "Серпень";
+						break;
+
+					case 9:
+						result = "Вересень";
+						break;
+					case 10:
+						result = "Жовтень";
+						break;
+					case 11:
+						result = "Листопад";
+						break;
+					case 12:
+						result = "Грудень";
+						break;
+					case 1:
+						result = "Січень";
+						break;
+					case 2:
+						result = "Лютий";
+						break;
+				}
+				alert(`It's ${result}`);
+			}
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 7</title>
+		<style>
+			td {
+				border: 1px solid #000;
+			}
+			table {
+				border: 2px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 7</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 6</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 6
+			// Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+			let tableRows = parseInt(prompt("Enter table rows count"));
+			let tableColumns = parseInt(prompt("Enter table columns count"));
+			function createTable(rows, columns) {
+				document.write(`<table>`);
+				for (let row = 1; row <= rows; row++) {
+					document.write(`<tr>`);
+					for (let column = 1; column <= columns; column++) {
+						document.write(`<td>${row}-${column}</td>`);
+					}
+					document.write(`</tr>`);
+				}
+				document.write(`</table>`);
+			}
+			createTable(tableRows, tableColumns);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

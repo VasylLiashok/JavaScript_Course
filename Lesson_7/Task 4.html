@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 7</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 7</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 0
+			// Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.
+			let firstNumber = parseInt(prompt("Enter first number"));
+			let secondNumber = parseInt(prompt("Enter second number"));
+			let thirdNumber = parseInt(prompt("Enter third number"));
+			function giveNumberInfo(num1, num2, num3) {
+				let evenNumber = 0;
+				let plusNumber = 0;
+				let moreOneHundredNumber = 0;
+				num1 % 2 === 0 ? evenNumber++ : null;
+				num2 % 2 === 0 ? evenNumber++ : null;
+				num3 % 2 === 0 ? evenNumber++ : null;
+				num1 > 0 ? plusNumber++ : null;
+				num2 > 0 ? plusNumber++ : null;
+				num3 > 0 ? plusNumber++ : null;
+				num1 > 100 ? moreOneHundredNumber++ : null;
+				num2 > 100 ? moreOneHundredNumber++ : null;
+				num3 > 100 ? moreOneHundredNumber++ : null;
+				document.write(
+					`кількість парних - ${evenNumber},<br> кількість додатних - ${plusNumber},<br> кількість більших за 100 - ${moreOneHundredNumber}`
+				);
+			}
+			giveNumberInfo(firstNumber, secondNumber, thirdNumber);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
