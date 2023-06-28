@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 8</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 8</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>
+							Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник
+							(має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 1
+			// Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+			let subjectCount = parseInt(prompt("Введіть кількість предметів"));
+			let marks = inputMarks(subjectCount);
+			let minMark = lowestMark(marks);
+			document.write(`Середній бал учня ${averageMark(marks)} <br>`);
+			document.write(`Цей учень ${studentStatus(minMark)}`);
+
+			function inputMarks(subjectNum) {
+				let marks = [];
+				for (let index = 1; index <= subjectCount; index++) {
+					let mark = parseInt(prompt(`Введіть оцінку з ${index} предмету`, "2"));
+					marks.push(mark);
+				}
+				return marks;
+			}
+			function averageMark(marks) {
+				let summ = 0;
+				for (let i = 0; i < marks.length; i++) {
+					summ += marks[i];
+				}
+				return (summ / marks.length).toFixed(2);
+			}
+			function lowestMark(marks) {
+				let mark = 5;
+				for (let i = 0; i < marks.length; i++) {
+					if (marks[i] < mark) {
+						mark = marks[i];
+					}
+				}
+				return mark;
+			}
+			function studentStatus(mark) {
+				let studentStatus;
+				switch (mark) {
+					case 2:
+						studentStatus = "двійочник";
+						break;
+					case 3:
+						studentStatus = "Трійочник";
+						break;
+					case 4:
+						studentStatus = "Хорошист";
+						break;
+					case 5:
+						studentStatus = "Відмінник";
+						break;
+				}
+				return studentStatus;
+			}
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

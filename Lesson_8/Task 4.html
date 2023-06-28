@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 7</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 7</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+						<p>
+							Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+							<br />
+							• починаються на букву «А»; <br />• перша і остання літери співпадають; <br />• складаються з більше ніш 5 символів;
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 4
+			// Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+			// •	починаються на букву «А»;
+			// •	перша і остання літери співпадають;
+			// •	складаються з більше ніш 5 символів;
+			//------------------------------------
+			let carNumbers = inputData();
+			let firstLetter = prompt("Введіть першу букву для перевірки").toUpperCase();
+			document.write(`Кількість номерів, що починаються на літеру ${firstLetter} - ${startLetter(carNumbers, firstLetter)} <br>`);
+			document.write(`Кількість номерів, у яких співпадають перша та остання літера - ${lettersCompare(carNumbers)} <br>`);
+			document.write(`Кількість номерів, у яких більше 5 символів - ${lettersInNumberCount(carNumbers)}`);
+			//----------------------------------
+			function inputData() {
+				let carNumbers = [];
+				for (let index = 0; index < 3; index++) {
+					let carNumber = prompt("Введіть номер авто");
+					carNumbers.push(carNumber);
+				}
+				return carNumbers;
+			}
+			function startLetter(array, letter) {
+				let counter = 0;
+				for (let i = 0; i < array.length; i++) {
+					if (array[i][0].toUpperCase() === letter) {
+						counter++;
+					}
+				}
+				return counter;
+			}
+			function lettersCompare(array) {
+				let counter = 0;
+				for (let i = 0; i < array.length; i++) {
+					if (array[i][0].toUpperCase() === array[i][array[i].length - 1].toUpperCase()) {
+						counter++;
+					}
+				}
+				return counter;
+			}
+			function lettersInNumberCount(array) {
+				let counter = 0;
+				for (let i = 0; i < array.length; i++) {
+					if (array[i].length >= 5) {
+						counter++;
+					}
+				}
+				return counter;
+			}
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 8</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 8</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 5</h4>
+						<p>
+							Дано послідовність оцінок учня. Підрахувати кількість: 1) двійок 2) кількість хороших оцінок (добре, відмінно); 3) кількість оцінок, які
+							нижче середнього.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 5
+			//Дано послідовність оцінок учня. Підрахувати кількість:
+			// 1)	двійок
+			// 2)	кількість хороших оцінок (добре, відмінно);
+			// 3)	кількість оцінок, які нижче середнього.
+			let studentMarks = inputData();
+
+			document.write(`Кількість двійок ${countMarks(studentMarks, 2)} <br>`);
+			document.write(`Кількість хороших оцінок ${countMarks(studentMarks, 4) + countMarks(studentMarks, 5)} <br>`);
+			document.write(`Кількість оцінок, які нижче середнього ${averageMarks(studentMarks)}`);
+			//--------------------------------------------------
+			function inputData() {
+				let studentMarks = [];
+				for (let index = 0; index < 10; index++) {
+					let studentMark = parseInt(prompt("Введіть оцінку"));
+					studentMarks.push(studentMark);
+				}
+				return studentMarks;
+			}
+			function countMarks(marks, mark) {
+				let counter = 0;
+				for (let i = 0; i < marks.length; i++) {
+					if (mark === marks[i]) {
+						counter++;
+					}
+				}
+				return counter;
+			}
+			function averageMarks(marks) {
+				let counter = 0;
+				let summ = 0;
+				for (let i = 0; i < marks.length; i++) {
+					summ += marks[i];
+				}
+				let averageMark = summ / marks.length;
+				for (let i = 0; i < marks.length; i++) {
+					if (marks[i] < averageMark) {
+						counter++;
+					}
+				}
+				return counter;
+			}
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 3</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 3</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 3</h4>
+						<p>Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 3
+			//Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+			let names = ["Іван", "Петро", "Богдан", "Ірина", "Степан", "Наталя", "Галина", "Іван", "Іван", "Іван"];
+			let nameCount = countNames(names);
+			document.write(`Ім’я Іван зустрічаєьться ${nameCount} разів`);
+			function countNames(array) {
+				let nameCounter = 0;
+				for (let i = 0; i < array.length; i++) {
+					if (array[i] === "Іван") {
+						nameCounter++;
+					}
+				}
+				return nameCounter;
+			}
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
