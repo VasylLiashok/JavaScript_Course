@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 9</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 9</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 7</h4>
+						<p>Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 7
+			// Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+			let arrayLength = parseInt(prompt("Скільки у вас товарів?"));
+			let array = inputData(arrayLength);
+			const discount = 0.3;
+			document.write(`Ціни зі скидкою ${getDiscountPrices(array)}`);
+			function inputData(num) {
+				let array = [];
+				for (let index = 0; index < num; index++) {
+					let userNumber = parseInt(prompt("Введіть ціну"));
+					array.push(userNumber);
+				}
+				document.write(`Ціни без скидки ${array} <br>`);
+				return array;
+			}
+			function getDiscountPrices(arr) {
+				arr.forEach((element, index, array) => {
+					if (element > 1000) {
+						array[index] -= element * discount;
+					}
+				});
+				return arr;
+			}
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

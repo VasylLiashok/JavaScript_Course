@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 9</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 9</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+						<p>Дано масив елементів. Вивести на екран елементи, що більші за 100</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 4
+			// Дано масив елементів. Вивести на екран елементи, що більші за 100
+			//------------------------------------
+
+			let arrayLength = parseInt(prompt("Скільки цифр будете вводити?"));
+			let array = inputData(arrayLength);
+			for (const num of array) {
+				if (num > 100) {
+					document.write(`${num}<br>`);
+				}
+			}
+			function inputData(num) {
+				let array = [];
+				for (let index = 0; index < num; index++) {
+					let userNumber = parseInt(prompt("Введіть число"));
+					array.push(userNumber);
+				}
+				return array;
+			}
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

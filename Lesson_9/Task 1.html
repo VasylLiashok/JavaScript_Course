@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 9</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 9</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів заповнених нулями.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 1
+			// Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів заповнених нулями.
+			let elNumber = parseInt(prompt("Введіть кількість елементів"));
+			let array = new Array(elNumber).fill(0);
+			document.write(`${array}`);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
