@@ -34,8 +34,8 @@
 			// загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
 			let visitorsCount = inputData();
 			let visitorsLess20Days = visitorsLess(visitorsCount, 20);
-			let minVisitorsDay = minvisitors(visitorsCount);
-			let maxVisitorsDay = maxvisitors(visitorsCount);
+			let minVisitorsDay = minvisitors(visitorsCount).slice(0, -1);
+			let maxVisitorsDay = maxvisitors(visitorsCount).slice(0, -1);
 			document.write(`Дні коли відвідувачів менше 20 ${visitorsLess20Days}<br>`);
 			document.write(`День коли мінімальна кількість ${minVisitorsDay}<br>`);
 			document.write(`День коли максимальна кількість ${maxVisitorsDay}<br>`);
@@ -60,23 +60,24 @@
 				return dayCount;
 			}
 			function minvisitors(visitors) {
-				let dayCount = 0;
+				let dayCount = "";
 				let minCount = Infinity;
+
 				for (let i = 0; i < visitors.length; i++) {
-					if (visitors[i] < minCount) {
+					if (visitors[i] <= minCount) {
 						minCount = visitors[i];
-						dayCount = i;
+						dayCount += `${i + 1},`;
 					}
 				}
 				return dayCount;
 			}
 			function maxvisitors(visitors) {
-				let dayCount = 0;
+				let dayCount = "";
 				let maxCount = -Infinity;
 				for (let i = 0; i < visitors.length; i++) {
-					if (visitors[i] > maxCount) {
+					if (visitors[i] >= maxCount) {
 						maxCount = visitors[i];
-						dayCount = i;
+						dayCount += `${i + 1},`;
 					}
 				}
 				return dayCount;

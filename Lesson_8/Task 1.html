@@ -30,12 +30,12 @@
 			let subjectCount = parseInt(prompt("Введіть кількість предметів"));
 			let marks = inputMarks(subjectCount);
 			let minMark = lowestMark(marks);
-			document.write(`Середній бал учня ${averageMark(marks)} <br>`);
+			document.write(`Середній бал учня ${averageMark(marks).toFixed(2)} <br>`);
 			document.write(`Цей учень ${studentStatus(minMark)}`);
 
 			function inputMarks(subjectNum) {
 				let marks = [];
-				for (let index = 1; index <= subjectCount; index++) {
+				for (let index = 1; index <= subjectNum; index++) {
 					let mark = parseInt(prompt(`Введіть оцінку з ${index} предмету`, "2"));
 					marks.push(mark);
 				}
@@ -46,7 +46,7 @@
 				for (let i = 0; i < marks.length; i++) {
 					summ += marks[i];
 				}
-				return (summ / marks.length).toFixed(2);
+				return summ / marks.length;
 			}
 			function lowestMark(marks) {
 				let mark = 5;
