@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 12</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 12</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 1
+			const arrayLength = 30;
+			let array = createArray(arrayLength, 0, 100);
+
+			function createArray(arrayLength, minMunm, maxNum) {
+				let arr = [];
+				for (let i = 0; i < arrayLength; i++) {
+					let randomNumber = minMunm + Math.floor(Math.random() * (maxNum - minMunm + 1));
+					arr.push(randomNumber);
+				}
+				return arr;
+			}
+			const swap = (arr, i, j) => {
+				const akum = arr[i];
+				arr[i] = arr[j];
+				arr[j] = akum;
+			};
+
+			//========================================================================================================================================================
+			// Задача 2. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.
+
+			let changeCounter = getChangeCountShake(array);
+
+			document.write(`Кількість обмінів ${changeCounter} <br>`);
+
+			function getChangeCountShake(arr) {
+				let changeCounter = 0;
+				let leftIndex = 0;
+				let rightIndex = arr.length - 1;
+				while (leftIndex < rightIndex) {
+					for (let index = leftIndex; index < rightIndex; index++) {
+						if (arr[index] > arr[index + 1]) {
+							swap(arr, index, index + 1);
+							changeCounter++;
+							document.write(`${arr}.<br> `);
+						}
+					}
+					rightIndex--;
+					for (let index = rightIndex; index > leftIndex; index--) {
+						if (arr[index] < arr[index - 1]) {
+							swap(arr, index, index - 1);
+							changeCounter++;
+							document.write(`${arr}.<br> `);
+						}
+					}
+					leftIndex++;
+				}
+				return changeCounter;
+			}
+			//========================================================================================================================================================
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
