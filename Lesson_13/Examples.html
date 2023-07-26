@@ -1,4 +1,5 @@
-Розв_язані_задачі.html
+Використано 82% обсягу пам’яті … Коли пам’ять у сховищі вичерпається, ви не зможете створювати, редагувати й завантажувати файли. Отримайте 100 ГБ
+пам’яті на 1 місяць за 69,99 грн 34,99 грн. розв_язані_задачі.html
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -9,249 +10,267 @@
 	</head>
 	<body>
 		<script>
-			// Тестовий масив
-			// let arr = [
-			//   56, -78, 252, 23, -122, 356, 122, 436,
-			//   -111, 344, 21, 3, -356, 342,
+			//============================================================
+			// let matr = [
+			//   [1, 23, 4, 23, 45, 67],
+			//   [1, 23, 4, 23, 45, 67],
+			//   [1, 23, 4, 23, 45, 67],
+			//   [1, 23, 4, 23, 45, 67],
+			//   [1, 23, 4, 23, 45, 67],
 			// ]
-			//----- Сортування вибором 1.
-			// const prevLastIndex = arr.length - 2
-			// let counter = 0
-			// for (let i = 0; i <= prevLastIndex; i++) {
-			//   for (let j = i + 1; j < arr.length; j++) {
-			//     if (arr[i] < arr[j]) {
-			//       let temp = arr[i]
-			//       arr[i] = arr[j]
-			//       arr[j] = temp
-			//       counter++
+			// 1.Знайти суми елементів у вказаній області
+			//  7) У парних рядках – непарні стовпці, у непарних – парні.
+			// let s = 0
+			// for (let i = 0; i < matr.length; i++) {
+			//   //------ 1
+			//   // let startColIndex
+			//   // if (i % 2 == 0) startColIndex = 1
+			//   // else startColIndex = 0
+			//   // for (let j = startColIndex; j < matr[0].length; j += 2) {
+			//   //   s += matr[i][j]
+			//   // }
+			//   //----2
+			//   for (let j = 1- i%2 ; j < matr[0].length; j += 2) {
+			//     s += matr[i][j]
+			//   }
+			// }
+			// document.write(s)
+
+			//============================================================
+			// 8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+			// let matr = [
+			//   // maxRowsElements=[
+			//   [2, 3, 4], // -> max = 4           4
+			//   [0, 1, 1], //-> max = 1            1
+			//   [1, 2, 3], //-> max = 3            3
+			//   [2, 1, 2], //-> max = 2            2]
+			// ]
+			//------ 1 (з використанням matr.sort, та Math.max при порівнні рядків)
+			// let martCopy1 = JSON.parse(JSON.stringify(matr))
+			// martCopy1.sort((row1, row2) => {
+			//   const maxRow1 = Math.max(...row1)
+			//   const maxRow2 = Math.max(...row2)
+			//   return maxRow2 - maxRow1
+			// })
+			// console.log(martCopy1)
+			//------ 2
+			// 1) поубуємо масив з максимальних елементів рядків
+			// let maxRowsElements = matr.map((row) => Math.max(...row))
+			// document.write(maxRowsElements)
+			// 2) функція сортування одночасно масиву з максимальними і відповідно двовимірного масиву
+
+			// const lastPrevElentIndex = maxRowsElements.length - 2
+			// for (let i = 0; i <= lastPrevElentIndex; i++) {
+			//   //--- шукаємо індекс максимального
+			//   let maxIndex = i
+			//   for (let j = i + 1; j < maxRowsElements.length; j++) {
+			//     if (maxRowsElements[j] > maxRowsElements[maxIndex]) maxIndex = j
+			//   }
+			//   //---- якщо індекс максимального не співпадає, то міняємо місцями елемент з номером і maxIndex
+			//   if (maxIndex !== i) {
+			//     // -- міняємо місцями елементи у масиві з максимальних для рядків
+			//     let temp = maxRowsElements[i]
+			//     maxRowsElements[i] = maxRowsElements[maxIndex]
+			//     maxRowsElements[maxIndex] = temp
+
+			//     // -- міняємо відповідні рядки матриці
+			//     let tempRow = matr[i]
+			//     matr[i] = matr[maxIndex]
+			//     matr[maxIndex] = tempRow
+			//   }
+			// }
+			// console.log(matr)
+			//============================================================
+			// 9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+
+			//======================= РЕКУРСІЯ =====================================
+
+			//---- Вивести на екран усі перестановки заданої послідовності чисел
+			// function nextB(step, resArr) {
+			//   if (step === 5) document.write(`${resArr} <br>`)
+			//   else {
+			//     nextB(step + 1, [...resArr, 0])
+			//     nextB(step + 1, [...resArr, 1])
+			//   }
+			// }
+
+			// nextB(0, [])
+			//============================================================
+			//---- Вивести на екран усі перестановки заданої послідовності чисел
+			// let arr = [31, 12, 8, 34, 55]
+			// function next(baseArr, resArr) {
+			//   if (baseArr.length === 0) document.write(`${resArr} <br>`)
+			//   else {
+			//     for (let i = 0; i < baseArr.length; i++) {
+			//       next(
+			//         baseArr.filter((el, ind) => ind !== i),
+			//         [...resArr, baseArr[i]]
+			//       )
 			//     }
 			//   }
 			// }
-			// document.write(arr)
-			// console.log(counter)
-			//----- Сортування вибором 2
-			// const prevLastIndex = arr.length - 2
-			// let counter = 0
-			// for (let i = 0; i <= prevLastIndex; i++) {
-			//   let minIndex = i
-			//   //----- пошук індекса мінімального елемента від і-до останнього
-			//   for (let j = i + 1; j < arr.length; j++) {
-			//     if (arr[j] < arr[minIndex]) {
-			//       minIndex = j
-			//     }
+			// next(arr, [])
+			//======================= ЗАМИКАННЯ =====================================
+
+			//============================================================
+			//--- Створити ітератор по номерам місяців
+
+			// function getMonthIterator(monthNum, min = 1, max = 12) {
+			//   // --- правило коректної зміни номера місяця
+			//   function getNextMonth() {
+			//     if (monthNum === max) monthNum = 1
+			//     else ++monthNum
+			//     return monthNum
 			//   }
-			//   //---- якщо мінімлаьний не у позиції "і" то міняємо місцями
-			//   if (i !== minIndex) {
-			//     let temp = arr[i]
-			//     arr[i] = arr[minIndex]
-			//     arr[minIndex] = temp
-			//     counter++
+			//   // --- повертаємо правило зміни місяця
+			//   return getNextMonth
+			// }
+
+			// let nextMonth = getMonthIterator(7)
+			// for (let i = 0; i < 30; i++) {
+			//   document.write(`${nextMonth()}<br>`)
+			// }
+			//---- Створити ітератор для постового обчислення і повертання квадратів деякого масиву
+			// let colors = ['red', 'green', 'blue', 'yellow']
+
+			// function getColorSelector(colors, currentColorIndex) {
+			//   currentColorIndex ??= colors.length - 1
+			//   function getNextColor() {
+			//     currentColorIndex++
+			//     if (currentColorIndex === colors.length) currentColorIndex = 0
+			//     return colors[currentColorIndex]
 			//   }
-			// }
-			// document.write(arr)
-			// console.log(counter)
-
-			//------------Quick ---
-			// //Функція обміну елементів місцями
-			// function swap(A, i, j) {
-			//   let temp = A[i]
-			//   A[i] = A[j]
-			//   A[j] = temp
+			//   return getNextColor
 			// }
 
-			// //Поділ фрагменту від p до q
-			// //на дві частини (<=pivot та >pivot)
-			// function Partition(A, p, q) {
-			//   let pivot = A[q]
-			//   let i = p - 1
-			//   for (let j = p; j < q; j++) {
-			//     if (A[j] <= pivot) {
-			//       i = i + 1
-			//       swap(A, i, j)
-			//     }
-			//   }
-			//   swap(A, i + 1, q)
-			//   //повертаємо нову позицію pivot
-			//   return i + 1
+			// let nextColorSelector = getColorSelector(colors, 1)
+			// for (let i = 0; i < 30; i++) {
+			//   document.write(`${nextColorSelector()}<br>`)
 			// }
 
-			// //Основна функція
-			// function Quicksort(A, p, q) {
-			//   if (p >= q) return
-			//   //ділимо на дві частини
-			//   let i = Partition(A, p, q)
-			//   //окремо сортуємо першу частину
-			//   Quicksort(A, p, i - 1)
-			//   //окремо сортуємо другу частину
-			//   Quicksort(A, i + 1, q)
-			// }
-
-			// Quicksort(arr, 0, arr.length - 1)
-			// document.write(arr)
-
-			//=============== Задачі з одновимірними масивами ============================================
-			// let arr = [
-			//   56, -78, 252, 23, -122, 356, 122, 436, -111, 344, 21, 3, -356, 342,
-			// ]
-			//=========================================================================================
-			//Список тих цін, які більші за попереднє значення
-
-			// alert(resArr)
-			//=========================================================================================
-			//=========================================================================================
-			//=========================================================================================
-			//=========================================================================================
-			//=========================================================================================
-			//=========================================================================================
-			let scores = [56, -78, 252, 23, -122, 356, 0, 122, 436, -111, 0, 344, 21, 3, -356, 342];
-			//=========================================================================================
-			//Задача. Дано випадкові значення виграшів - результати ігрового барабана (від -500 до 500)
-			// //  15) Упорядквати за зростанням
-			// scores.sort((a, b) => a - b)
-			// //  16) Упорядквати за спаданням
-			// scores.sort((a,b)=>b-a)
-
-			// //  17) Упорядкувати так, щоб спочатку були від"ємні (без зміни їх слідування), потім всі інші(без зміни їх слідування)
-			// scores.sort((a, b) => {
-			//   if (a < 0 && b >= 0) return -1
-			//   if (a >= 0 && b < 0) return 1
-			//   return 0
-			// })
-
-			// document.write(`${scores}<br><br>`)
-			// console.log(scores)
-			// let scores = [
-			//   56, -78, 252, 23, -122, 356, 0, 122, 436, -111, 0, 344, 21, 3, -356,
-			//   342,
-			// ]
-			//  18) Упорядкувати так, щоб спочатку були нулі, потім від"ємні, потім додатні
-			// scores.sort((a, b) => {
-			//   if (a === 0 && b !== 0) return -1
-			//   if (a !== 0 && b === 0) return 1
-			//   return a - b
-			// })
-			// document.write(`${scores}<br><br>`)
-
-			//Задача. Запрограмувати пошук бінарним методом
-			//       0   1  2  3   4   5   6  7  <- індекси (length = 8) (номер останнього = (length-1)
-			let a = [23, 0, 0, 4, 11, -2, 9, -5];
-
-			//---- Сортування включеннями
-			//---- Перевірка належності елемента упорядкованого масиву
-			//     (належить - true, не належить - false)
-			// function includes_binarySearch(arr, searchElement) {
-
-			// }
-
-			//---- Знаходження інексу елемента у масиві (якщо немає, то результат = -1)
-			// function findIndex_binarySearch(arr, searchElement) {
-
-			// }
-
-			//========================================================================
-			//Задача. Дано масив імен користувачів
-			let names = ["John", "Paul", "Olga", "Andrew", "Abrams", "Abba", "Peter", "Tina", "Olga", "Jack", "Peter"];
-			// 1) Упорядкувати масив за зростанням
-			// names.sort()
-
-			// 2) Упорядкувати масив за спаданням
-			//---- 1 ---  sort().reverse()
-			// names.sort().reverse()
-			//---- 2 ---
-			// names.sort((a, b) => {
-			//   if (a < b) return 1
-			//   if (a > b) return -1
-			//   return 0
-			// })
-
-			// 3) Упорядкувати масив за першою літерою за зростанням
-			// names.sort((a, b) => {
-			//   const code1 = a.charCodeAt(0)
-			//   const code2 = b.charCodeAt(0)
-			//   return code1 - code2
-			// })
-			// 3) Упорядкувати масив за першою літерою за спаданням
-			// names.sort((a, b) => {
-			//   const code1 = a.charCodeAt(0)
-			//   const code2 = b.charCodeAt(0)
-			//   return code1 - code2
-			// })
-			// 4) Упорядкувати масив за другою літерою за спаданням
-			// 5) Упорядкувати масив за зростанням довжин імен
-			// 6) Упорядкувати масив за спаданням довжин імен
-			// 7) Упорядкувати масив так, щоб спочатку були Peter, потім всі інші
-			// 8) Упорядкувати масив так, щоб спочатку були Peter, в кінці Olga потім всі інші
-
-			// document.write(names)
-			//========================================================================
-			//   2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
-			//========================================================================
-			// Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
-			// function generateGameField(rowsNumber, colsNumber, shipsNumber) {
-			//   //---- Створюємо масив заповнений нулями
-			//   let arr =[]
-			//   for (let row = 0; row < rowsNumber; row++) {
-			//     let newRow = new Array(colsNumber).fill(0)
-			//   }
-			//   //---- Розміщуємо кораблі
-			//   for (let shipNum = 0; shipNum < shipsNumber; ) {
-			//     const randRowIndex = Math.floor(Math.random()*rowsNumber)
-			//     const randColIndex = Math.floor(Math.random()*colsNumber)
-			//     if(arr[randRowIndex] [randColIndex] !==1){
-			//       arr[randRowIndex] [randColIndex] =1
-			//       shipNum++
-			//     }
-			//   }
-			//   return arr
-			// }
-			//========================================================================
-			// let arr = [
-			//   [1, 3, 0, 8, 2],
-			//   [1, 0, 0, 18, 2],
-			//   [0, 3, 0, 1, 0],
-			// ]
-			// Знайти загальну кількість нулів у двовимірному масиві
-			//------- 1
-			// let zeroNum = arr
-			//   .flat()
-			//   .reduce(
-			//     (prevZeroNum, el) => (el === 0 ? prevZeroNum + 1 : prevZeroNum),
-			//     0
+			//--- Створити ітератор по літерам слова
+			// function getLettersInWord(word) {}
+			// function translator(word, description) {
+			//   let taskInfo = alert(
+			//     `Перекладіть англійською мовою: ${description} (${word.length} букв)`
 			//   )
+			//   let wordInLetters = getLettersInWord(word)
+			//   let counter = 0
+			//   let userLettersArr = []
+			//   for (let letter = 0; letter < word.length; letter++) {
+			//     const userLetter = prompt(
+			//       `Введіть ${letter + 1} букву перекладу`
+			//     ).toLowerCase()
+			//     const wrightLetter = wordInLetters()
 
-			//------- 2
-			// let zeroNum = arr.reduce((prevTotalZeroSum, row) => {
-			//   //---- знаходження кількості нулів у поточному рядку row
-			//   let zerowsInRow = row.reduce(
-			//     (prevZeroInRow, el) => (el === 0 ? prevZeroInRow + 1 : prevZeroInRow),
-			//     0
+			//     userLettersArr.push(userLetter)
+			//     if (wrightLetter === userLetter) counter++
+			//   }
+			//   return [userLettersArr, counter]
+			// }
+			// let word = 'spring'
+			// let description =
+			//   'Oдна з чотирьох пір року між зимою та літом, характерна для помірних широт '
+			// let [userLettersArr, counter] = translator(word, description)
+			// document.write(
+			//   `Переклад слова: ${word}. &lt;br&gt; Ви ввели букви: ${userLettersArr}.
+			// Кількість правильно вгаданих букв: ${counter}`
+			// )
+
+			//=========================================
+			// function createCounter(startValue, step) {
+			//   let currentValue = startValue
+			//   function couter() {
+			//     currentValue += step
+			//     return currentValue
+			//   }
+
+			//   return couter
+			// }
+
+			// let cntr1 = createCounter(10, 5)
+			// console.log('--------- cntr1 -----')
+			// console.log(cntr1)
+			// let cntr2 = createCounter(2, 4)
+			// let cntr3 = createCounter(1, 7)
+
+			// document.write(`${cntr1()} <br>`) //15
+			// document.write(`${cntr1()} <br>`) //20
+			// document.write(`${cntr1()} <br>`) //25
+
+			// document.write(`${cntr2()} <br>`) //6
+			// document.write(`${cntr2()} <br>`) //10
+
+			// document.write(`${cntr1()} <br>`) //30
+			//======================= ТАЙМЕРИ =====================================
+
+			//============================================================
+			//   Задача. Чере 3 секунди після відкриття сторінки привітати користувача
+			// setTimeout(() => alert('hello'), 3000)
+			// setTimeout(() => alert('hi'), 1000)
+
+			//============================================================
+			// Встановити інетвал на 5секунд, але якщо користувач підвердить вхід. то відмінити таймер
+			// let intervalId = setInterval(() => alert('Зареєструйтесь'), 5000)
+			// if (confirm('Бажаєте зареєструватись?')) clearInterval(intervalId)
+
+			//============================================================
+			//Через 3 серкунди перейти на укрнет (window.location.href = 'https://www.ukr.net/')
+
+			//============================================================
+			// Задача. Кожні 10 секнуд нагадувати користувачу, що бажано зареєструватися (виводити повідомлення)
+			// Але через 10 секунд припинити нагадування.
+			// let intervalId = setInterval(() => alert('Зареєструйтесь'), 3000)
+			// setTimeout(() => clearInterval(intervalId), 10000)
+
+			//============================================================
+
+			// Що побачить користувач 1
+			// for (let i = 1; i < 5; i++) {
+			//   setTimeout(
+			//     function () {
+			//       alert(i)
+			//     },
+
+			//     2000
 			//   )
-			//   //---- до загальної кількості нулів додаємо кількість нулів у поточному рядку
-			//   return prevTotalZeroSum + zerowsInRow
-			// }, 0)
-			// document.write(zeroNum)
-			//========================================================================
-			// Знайти максимальну кількість нулів у одному рядку
-			// let maxZeroInOneRow = arr.reduce((prevMaxZeroNum, row) => {
-			//   //--- знаходимо кількість нулів у рядку row
-			//   let zeroNumInRow = row.reduce(
-			//     (prevZeroNum, el) => (el === 0 ? prevZeroNum + 1 : prevZeroNum),
-			//     0
+			// }
+			//============================================================
+
+			// Що побачить користувач 2
+			// let i
+			// for (i = 1; i < 5; i++) {
+			//   setTimeout(
+			//     function () {
+			//       alert(i)
+			//     },
+
+			//     2000
 			//   )
-			//   //--- порівнюємо з попереднім максимальним значенням
-			//   return zeroNumInRow > prevMaxZeroNum ? zeroNumInRow : prevMaxZeroNum
-			// }, -Infinity)
+			// }
 
-			// document.write(maxZeroInOneRow)
+			//============================================================
 
-			//========================================================================
-			//відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
-			// 1) потрібно створити масив з максимальних елементів рядків  maxRowsElements
-			// 2) упорядковувати масив maxRowsElements (і якщо міняємо якісь елементи у масиві maxRowsElements, то
-			// треба міняти місцями і відповідні рядки)
+			// Що побачить користувач 3
+			// let num = 0
+			// let myTimer = setInterval(() => {
+			//   if (num === 5) {
+			//     alert('Stop')
+			//     clearInterval(myTimer)
+			//   } else alert(num++)
+			// }, 1000)
+			//============================================================
 
-			//========================================================================
-			//========================================================================
+			// Що побачить користувач 4
+			// function myFunc(num) {
+			//   setTimeout(() => {
+			//     if (num < 5) {
+			//       alert(num)
+			//       myFunc(num + 1)
+			//     }
+			//   }, 1000)
+			// }
+			// myFunc(1)
 		</script>
 	</body>
 </html>

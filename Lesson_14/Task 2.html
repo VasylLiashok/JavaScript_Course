@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 14</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 14</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 1 Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
+
+			//========================================================================================================================================================
+			let userDate = {
+				day: parseInt(prompt("Введіть день")),
+				month: parseInt(prompt("Введіть місяць")),
+				year: parseInt(prompt("Введіть рік")),
+			};
+			const monthCount = parseInt(prompt("Введіть кількість місяців"));
+			//--- 2) з об"єкта беремо тільки місяць
+			function getShiftedYear({ month, year }, monthCount) {
+				let yearCount = 0;
+				if (month + monthCount <= 12) {
+					return yearCount;
+				} else {
+					let restMonthes = Math.abs(12 - month - monthCount);
+
+					if (restMonthes / 12 <= 1) {
+						return yearCount + 1;
+					} else if (restMonthes / 12 > 1) {
+						let leftedMonthesToFullYear = 12 - month;
+						return (yearCount = Math.ceil((restMonthes - leftedMonthesToFullYear) / 12) + 1);
+					}
+				}
+			}
+
+			const shiftedYear = userDate.year + getShiftedYear(userDate, monthCount);
+			document.write(`Через ${monthCount} місяців буде ${shiftedYear} рік`);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
