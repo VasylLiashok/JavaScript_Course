@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 13</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 13</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>Нехай , де . Визначити . Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			function getNumber(maxNum) {
+				if (maxNum === 0) return 1;
+				return getNumber(maxNum - 1) + 2 * maxNum;
+			}
+
+			function getNumber(maxNum) {
+				let num = 1;
+				for (let i = 0; i <= maxNum; i++) {
+					if (i > 0) {
+						num = num + 2 * i;
+					}
+				}
+				return num;
+			}
+
+			document.write(`X = ${getNumber(10)}`);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

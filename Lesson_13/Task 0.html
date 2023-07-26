@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 13</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 13</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 0</h4>
+						<p>Задача 0. Pеалізувати рекурсивну функцію знаходження степеня числа а</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 0
+			let num = parseInt(prompt("Введіть число", 5));
+			let pow = parseInt(prompt("Введіть степіь", 5));
+			function getPowNumber(num, pow) {
+				if (pow === 1) return num;
+				else return getPowNumber(num, pow - 1) * num;
+			}
+			document.write(`${getPowNumber(num, pow)}`);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 13</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 13</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>Реалізувати бінарний пошук (розглядали на попередніх уроках) з використанням рекурсивного алгоритму.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 1 Реалізувати бінарний пошук (розглядали на попередніх уроках) з використанням рекурсивного алгоритму.
+			const numberArray = [1, 4, 9, 12, 45, 88, 120, 134, 145, 187];
+
+			document.write(`${numberArray}`);
+			function findNumber(arr, number, startPos, endPos) {
+				const middle = Math.floor((startPos + endPos) / 2);
+
+				if (arr[middle] === number) return middle;
+				if (arr[middle] > number) return findNumber(arr, number, startPos, middle - 1);
+				if (arr[middle] < number) return findNumber(arr, number, middle + 1, endPos);
+
+				return -1;
+			}
+
+			let endPosition = numberArray.length - 1;
+			let result = findNumber(numberArray, 120, 0, endPosition);
+			if (result !== -1) document.write(`<br>Число є в масиві під індексом ${result}`);
+			else document.write("<br>Такого числа немає");
+
+			//========================================================================================================================================================
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

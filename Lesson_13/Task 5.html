@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 13</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 13</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 5</h4>
+						<p>Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			//Task 1 Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка.
+			let tryCount = parseInt(prompt("Скільки прикладів бажаєте розв’язати?", 1));
+			function getRandomNumer() {
+				return 0 + Math.floor(Math.random() * 100);
+			}
+			function getComparedAnswers() {
+				let firstNumber = getRandomNumer();
+				let secondNumber = getRandomNumer();
+				let userAnswer = parseInt(prompt(`Яка буде сума ${firstNumber} та ${secondNumber}?`));
+				let computedAnswer = firstNumber + secondNumber;
+				if (userAnswer === computedAnswer) return "Все вірно";
+				else return "Неправильний розв’язок";
+			}
+			alert(`${getComparedAnswers()}`);
+			function showMessage(tryCount) {
+				if (tryCount > 0) {
+					setTimeout(() => {
+						alert(`${getComparedAnswers()}`);
+						showMessage(tryCount - 1);
+					}, 10000);
+				}
+			}
+			showMessage(tryCount - 1);
+
+			//========================================================================================================================================================
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
