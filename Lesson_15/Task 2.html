@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 15</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 15</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>Створити об’єкт «Авто».</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// // Створити об’єкт «Авто».
+
+			//========================================================================================================================================================
+			let addFuel = parseInt(prompt("Введіть кількість пального для заправки", 20));
+			let addPassengers = parseInt(prompt("Введіть кількість пасажирів для посадки", 2));
+			let removedPassengers = parseInt(prompt("Введіть кількість пасажирів для висадки", 2));
+			class Auto {
+				constructor(brand, fuelTank, currentFuel, passengerCapacity, currentPassengers, addFuel = 20, addPassengers = 2, removedPassengers = 2) {
+					this.brand = brand;
+					this.fuelTank = fuelTank;
+					this.currentFuel = currentFuel;
+					this.passengerCapacity = passengerCapacity;
+					this.currentPassengers = currentPassengers;
+				}
+				addFuel(addFuel) {
+					if (this.currentFuel + addFuel > this.fuelTank) throw new Error("Забагато пального");
+					else this.currentFuel += addFuel;
+					return this.currentFuel;
+				}
+				toString() {
+					return `Кількість пасажирів ${this.currentPassengers}`;
+				}
+				addPassengers(addPassengers) {
+					if (this.currentPassengers + addPassengers > this.passengerCapacity) throw new Error("Забагато пасажирів");
+					else this.currentPassengers += addPassengers;
+					return this.currentPassengers;
+				}
+				removePassengers(removedPassengers) {
+					if (this.currentPassengers - removedPassengers < 0) throw new Error("Замало пасажирів");
+					else this.currentPassengers -= removedPassengers;
+					return this.currentPassengers;
+				}
+			}
+			let auto = new Auto("BMW", 80, 35, 8, 3, addFuel, addPassengers, removedPassengers);
+			document.write(`${auto}`);
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

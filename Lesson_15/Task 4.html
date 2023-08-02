@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 15</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 15</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 4
+			let sites = [
+				{
+					image: "./img/01.jpg",
+					url: "www.org.ua",
+				},
+				{
+					image: "./img/02.jpg",
+					url: "www.org.ua",
+				},
+				{
+					image: "./img/03.jpg",
+					url: "www.org.ua",
+				},
+				{
+					image: "./img/041.jpg",
+					url: "www.org.ua",
+				},
+				{
+					image: "./img/05.jpg",
+					url: "www.org.ua",
+				},
+				{
+					image: "./img/06.jpg",
+					url: "www.org.ua",
+				},
+			];
+			class Banner {
+				constructor(sites) {
+					this.sites = sites;
+				}
+				getRandomNumber() {
+					return Math.floor(Math.random() * this.sites.length);
+				}
+				getRandomSite() {
+					return this.sites[this.getRandomNumber()];
+				}
+				toString() {
+					let randomSite = this.getRandomSite();
+					console.log(randomSite);
+					return `Зображення - ${randomSite.image} - Посилання -${randomSite.url}`;
+				}
+			}
+
+			let site = new Banner(sites);
+			document.write(`${site}`);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

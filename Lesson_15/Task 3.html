@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 15</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 15</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 3</h4>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 3
+			class MultChecker {
+				constructor(checkedNumber, correctAnswer = 0, incorrectAnswer = 0) {
+					this.checkedNumber = checkedNumber;
+					this.correctAnswer = correctAnswer;
+					this.incorrectAnswer = incorrectAnswer;
+				}
+				getRandomNumber() {
+					return 1 + Math.floor(Math.random() * 9);
+				}
+				getAnswer() {
+					let randomNumber = this.getRandomNumber();
+					let computedAnswer = this.checkedNumber * randomNumber;
+					let userAnswer = parseInt(prompt(`Введіть результат множення ${this.checkedNumber} на ${randomNumber}`));
+					if (userAnswer === computedAnswer) return 1;
+					else return -1;
+				}
+				renderAnswer() {
+					if (this.getAnswer() === 1) return this.correctAnswer++;
+					else return this.incorrectAnswer++;
+				}
+			}
+			let numberToCheck = parseInt(prompt("Введіть число для перевірки"));
+			let checker = new MultChecker(numberToCheck);
+			checker.renderAnswer();
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

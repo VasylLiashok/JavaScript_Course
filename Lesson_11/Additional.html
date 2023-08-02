@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 10</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 10</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Додаткові завдання</h4>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 1
+			// Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице.
+			let array = new Array(8);
+			array.fill(0);
+			// array.fill(1).fill(0, 1, array.length - 1);
+			// // Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля.
+			// for (let i = 0; i < array.length; i++) {
+			// 	if (i % 2 == 0) {
+			// 		array[i] = 0;
+			// 	} else {
+			// 		array[i] = 1;
+			// 	}
+			// }
+			// // Заполнить массив последовательными нечетными числами, начиная с единицы.
+			// for (let i = 0; i < array.length; i++) {
+			// 	array[0] = 1;
+			// 	array[i] = array[i - 1] + 2;
+			// }
+			//
+			// Сформировать массив из элементов арифметической прогрессии с заданным первым элементом x и разностью d
+			// let firstNumber = parseInt(prompt("Enter first number"));
+			// let step = parseInt(prompt("Enter step"));
+			// createArray(firstNumber, step);
+			// function createArray(num, step) {
+			// 	for (let i = 0; i < array.length; i++) {
+			// 		array[0] = firstNumber;
+			// 		array[i] = array[i - 1] + step;
+			// 	}
+			// 	return array;
+			// }
+			// Сформировать возрастающий массив из четных чисел.
+			// for (let i = 0; i < array.length; i++) {
+			// 	array[0] = 0;
+			// 	array[i] = array[i - 1] + 2;
+			// }
+			// console.log(array);
+			//========================================================================================================================================================
+
+			// Заполнить массив заданной длины различными простыми числами. Натуральное число, большее единицы, называется простым, если оно делится только на себя и на единицу.
+			// let arrayLength = parseInt(prompt("Enter array length"));
+			// let arr = createArray(arrayLength);
+			// function createArray(num) {
+			// 	let arr = [];
+			// 	for (let i = 0; i < num; ) {
+			// 		let randomNumber = 1 + Math.floor(Math.random() * 999);
+			// 		if (randomNumber > 1) {
+			// 			if (randomNumber % 2 !== 0 || randomNumber % 3 !== 0) {
+			// 				arr.push(randomNumber);
+			// 				i++;
+			// 			}
+			// 		}
+			// 	}
+			// 	return arr;
+			// }
+			// console.log(arr);
+			//========================================================================================================================================================
+
+			// Создать массив, каждый элемент которого равен квадрату своего номера.
+			// let newArray = array.map((el, i) => (el = Math.pow(i, 2)));
+			// console.log(newArray);
+
+			//========================================================================================================================================================
+			// Создать массив, на четных местах в котором стоят единицы, а на нечетных местах - числа, равные остатку от деления своего номера на 5.
+			// let newArray = array.map((el, i) => {
+			// 	if (i % 2 === 0) {
+			// 		el = 1;
+			// 	} else {
+			// 		el = i % 5;
+			// 	}
+			// 	return el;
+			// });
+			// console.log(newArray);
+			//========================================================================================================================================================
+			// Создать массив, состоящий из троек подряд идущих одинаковых элементов.
+			// let step = 0;
+			// const myArray = [];
+			// for (let index = 0; index < 30; index++) {
+			// 	if (index % 3 === 0) {
+			// 		step++;
+			// 	}
+			// 	myArray.push(step);
+			// }
+			// console.log(myArray);
+			//========================================================================================================================================================
+			// Создать массив, который одинаково читается как слева направо, так и справа налево.
+
+			// const myArray = [];
+			// for (let index = 0; index < 30; index++) {
+			// 	if (index % 3 === 0) {
+			// 		step++;
+			// 	}
+			// 	myArray.push(step);
+			// }
+			// console.log(myArray);
+			let step = 1;
+			let newArray = array.map((el, i, arr) => {
+				if (i < arr.length / 2) {
+					el = i;
+				} else {
+					el = i - step;
+					step += 2;
+				}
+				return el;
+			});
+			console.log(newArray);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

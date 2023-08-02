@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 15</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 15</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 5</h4>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			// //Task 3
+			let girls = ["Olha", "Petra", "Helen", "Maria", "Ira"];
+			let boys = ["Andriy", "Volodia", "Ivan", "Bohdan", "Stepan"];
+			class DanceControll {
+				constructor(boysArr, girlsArr) {
+					this.boysArr = boysArr;
+					this.girlsArr = girlsArr;
+				}
+				getRandomNumber(arr) {
+					return Math.floor(Math.random() * arr.length);
+				}
+				getBoyName() {
+					return this.boysArr[this.getRandomNumber(this.boysArr)];
+				}
+				getGirlName() {
+					return this.girlsArr[this.getRandomNumber(this.girlsArr)];
+				}
+				getPair() {
+					return `Пара на танці ${this.getBoyName()} ${this.getGirlName()}`;
+				}
+				run() {
+					setInterval(() => {
+						document.write(`${this.getPair()} <br>`);
+					}, 2000);
+				}
+			}
+			let dance = new DanceControll(boys, girls);
+			dance.run();
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 15</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 15</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 0</h4>
+						<p>
+							Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція
+							для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			"use strict";
+			//========================================================================================================================================================
+			let obj1 = {
+				numbers: [1, 4, 2, 78, 23, 87, 45, 12, 45, 56, 76, 12, 32, 45, 33],
+				getSumm: function () {
+					return this.numbers.reduce((prevSum, num) => prevSum + num);
+				},
+			};
+
+			let obj2 = {
+				numbers: [1, 4, 2, 45, 56, 76, 12, 78, 35, 32, 78, 23, 87, 45, 12, 45, 33, 1, 4, 2, 45, 56, 76, 12, 78],
+				getProd: function (minVal, maxVal) {
+					let prod = 1;
+					for (let i = minVal; i < maxVal; i++) {
+						prod *= this.numbers[i];
+					}
+					return prod;
+				},
+			};
+			let minVal = parseInt(prompt("Введіть мінімальну позицію", 0));
+			let maxVal = parseInt(prompt("Введіть максимальну позицію", 5));
+			//========================================================================================================================================================
+
+			let obj1Summ = obj1.getSumm();
+			document.write(`Сума першого об’єкту ${obj1Summ} <br>`);
+			let obj2Prod = obj2.getProd(minVal, maxVal);
+			document.write(`Добуток другого об’єкту ${obj2Prod} <br>`);
+
+			let obj2Summ = obj1.getSumm.call(obj2);
+			document.write(`Сума першого об’єкту ${obj2Summ} <br>`);
+			let obj1Prod = obj2.getProd.call(obj1, minVal, maxVal);
+			document.write(`Добуток першого об’єкту ${obj1Prod} <br>`);
+
+			let obj2SummApply = obj1.getSumm.apply(obj2);
+			document.write(`Сума першого об’єкту ${obj2Summ} <br>`);
+			let obj1ProdApply = obj2.getProd.apply(obj1, [minVal, maxVal]);
+			document.write(`Добуток першого об’єкту ${obj1ProdApply} <br>`);
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

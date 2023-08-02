@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 15</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 15</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			class Game {
+				constructor(cellNum, rabbits, shots) {
+					this.cellNum = cellNum;
+					this.rabbits = rabbits;
+					this.shots = shots;
+					this.gameField = this.createField();
+				}
+				getRandomNum() {
+					return Math.floor(Math.random() * this.cellNum);
+				}
+				createField() {
+					let field = new Array(this.cellNum).fill(0);
+					for (let rabbit = 0; rabbit < this.rabbits; ) {
+						let randomNum = this.getRandomNum();
+						if (field[randomNum] !== 1) {
+							field[randomNum] = 1;
+							rabbit++;
+						}
+					}
+					return field;
+				}
+				play() {
+					let shots = this.shots;
+					do {
+						let userShot = parseInt(prompt(`Введіть клітинку для пострілу від 0 до ${this.cellNum - 1}`));
+						shots--;
+						if (this.gameField[userShot] === 1) {
+							this.gameField[userShot] = 0;
+
+							this.rabbits--;
+							alert(`Ви попали. Залищилось ${this.rabbits} кроликів та ${shots} пострілів`);
+						} else {
+							alert(`Ви промахнулись. Залишилось ${shots} пострілів`);
+						}
+
+						if (shots === 0) {
+							alert("Постріли закінчились. Гру закінчено");
+						}
+					} while (shots > 0);
+				}
+			}
+			let game = new Game(15, 3, 5);
+			game.play();
+			console.log(game);
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
