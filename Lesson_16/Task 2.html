@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 16</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 16</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>
+							Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту. Реалізувати методи
+							додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться
+							на 100. Курс долара зберігати в окремому полі.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			class Money {
+				#dollarBalance;
+				constructor(grnSumm, dollarRate) {
+					this.dollarRate = dollarRate;
+					this.Balance = grnSumm;
+				}
+
+				get Balance() {
+					return this.#dollarBalance * this.dollarRate;
+				}
+
+				set Balance(grnValue) {
+					if (grnValue < 0) throw new Error("Недостатньо коштів");
+					return (this.#dollarBalance = grnValue / this.dollarRate);
+				}
+				addMoney(grnValue) {
+					if (grnValue < 0) throw new Error("Недостатньо коштів");
+					this.Balance += grnValue;
+				}
+				removeMoney(grnValue) {
+					if (grnValue < 0) throw new Error("Недостатньо коштів");
+					if (grnValue > this.Balance) throw new Error("Недостатньо коштів на рахунку");
+					this.Balance -= grnValue;
+				}
+				getDollarCourse() {
+					return this.Balance + 100 / this.#dollarBalance;
+				}
+			}
+			let bank = new Money(2000, 36.7);
+			bank.addMoney(10000);
+			console.log(bank);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

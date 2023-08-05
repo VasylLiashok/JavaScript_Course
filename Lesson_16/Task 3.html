@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 16</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 16</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 3</h4>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			class Manufacture {
+				constructor([title, creation, services, departmentList]) {
+					this.title = title;
+					this.creation = creation;
+					this.services = services;
+					this.departments = departmentList;
+				}
+
+				getManufactureAge(currentYear) {
+					return currentYear - this.creation.year;
+				}
+				getDepartmentsInCity(city) {
+					let departmentList = this.departments.filter((department) => department.city === city);
+					return departmentList;
+				}
+				getServices(price, time) {
+					let serviceList = this.services.filter((service) => price >= service.servicePrice && time >= service.terms);
+					return serviceList;
+				}
+			}
+
+			class Service {
+				constructor(serviceName, servicePrice, terms) {
+					this.serviceName = serviceName;
+					this.servicePrice = servicePrice;
+					this.terms = terms;
+				}
+			}
+			class Department {
+				constructor(country, city, street, building) {
+					this.country = country;
+					this.city = city;
+					this.street = street;
+					this.building = building;
+				}
+			}
+			let services = [
+				new Service("printing", 3000, 12),
+				new Service("painting", 600, 2),
+				new Service("rewriting", 150, 7),
+				new Service("consulting", 2400, 24),
+			];
+			let departments = [
+				new Department("Japan", "Tokio", "Osaka-street", 28),
+				new Department("Canada", "Vankuver", "Catana-street", 28),
+				new Department("Canada", "Vankuver", "Oregon-street", 56),
+				new Department("Greece", "Athena", "Zevs-street", 28),
+				new Department("Poland", "Varshawa", "Poland-street", 28),
+			];
+
+			let production = new Manufacture(["Service com", { year: 2016, month: "January" }, services, departments]);
+
+			document.write(`Фірма існує вже ${production.getManufactureAge(2023)} років <br>`);
+			let serviceList = production.getServices(800, 8);
+
+			let departmentInCity = production.getDepartmentsInCity("Vankuver");
+			console.log(departmentInCity);
+			for (const department of departmentInCity) {
+				document.write(`Депаратаменти у цьому місці знаходяться за вулицею ${department.street} номер будинку ${department.building}<br>`);
+			}
+
+			for (const service of serviceList) {
+				document.write(`Назва послуги - ${service.serviceName}, Вартість послуги - ${service.servicePrice}, Ціна послуги - ${service.terms} <br>`);
+			}
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

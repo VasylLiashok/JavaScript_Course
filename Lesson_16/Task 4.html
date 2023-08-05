@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 16</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 16</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			class TBankomat {
+				constructor(banknots) {
+					this.banknots = banknots;
+				}
+				getMinSumm() {
+					let minValue = this.banknots.reduce(
+						(value, banknote) => (value > banknote.denomination ? (value = banknote.denomination) : value),
+						Infinity
+					);
+					return minValue;
+				}
+				getMaxSumm() {
+					let totalSumm = this.banknots.reduce((prevSumm, banknote) => prevSumm + banknote.denomination * banknote.quantity, 0);
+					return totalSumm;
+				}
+				getMoney(summ) {
+					let totalSumm = this.getMaxSumm();
+					if (summ >= totalSumm) throw new Error("В банкоматі недостатньо грошей");
+					alert(`Залишилось в банкоматі ${totalSumm - summ} грн`);
+				}
+			}
+			class Banknote {
+				constructor(denomination, quantity) {
+					this.denomination = denomination;
+					this.quantity = quantity;
+				}
+			}
+			let banknotsArray = [
+				new Banknote(5, 250),
+				new Banknote(10, 400),
+				new Banknote(20, 150),
+				new Banknote(50, 600),
+				new Banknote(100, 800),
+				new Banknote(200, 250),
+			];
+			let bankomat = new TBankomat(banknotsArray);
+			let takeMoney = parseInt(prompt("Яку суму хочете зняти?"));
+			bankomat.getMoney(takeMoney);
+			console.log(bankomat.getMinSumm());
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

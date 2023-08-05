@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 16</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 16</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>
+							Задача 1. Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється структурою із трьома полями.
+							Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. Введення та виведення дати реалізувати за
+							допомогою методу toString.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			class ToDate {
+				#day = 0;
+				#month = 0;
+				#year = 0;
+				constructor(day, month, year) {
+					this.Day = day;
+					this.Month = month;
+					this.Year = year;
+				}
+				get Day() {
+					return this.#day;
+				}
+				get Month() {
+					return this.#month;
+				}
+				get Year() {
+					return this.#year;
+				}
+				set Year(newYear) {
+					if (newYear <= 0) throw new Error("Недопустимий рік");
+					this.#year = newYear;
+				}
+				set Month(newMonth) {
+					if (newMonth <= 0 || newMonth > 12) throw new Error("Недопустимий місяць");
+					this.#month = newMonth;
+				}
+				set Day(newDays) {
+					if (newDays <= 0 || newDays > 30) throw new Error("Недопустимий день");
+					this.#day = newDays;
+				}
+
+				increaseMonth(addMonth) {
+					let yearCount = 0;
+
+					if (this.#month + addMonth <= 12) {
+						this.#month += addMonth;
+					} else {
+						let restMonthes = Math.abs(12 - this.#month - addMonth);
+
+						if (restMonthes / 12 <= 1) {
+							this.increaseYear(1);
+
+							this.#month += restMonthes - 1;
+							console.log(this.#month);
+						} else if (restMonthes / 12 > 1) {
+							let newRestMonthes = restMonthes % 12;
+							if (this.#month + newRestMonthes <= 12) {
+								this.#month += newRestMonthes - 1;
+								console.log(this.#month);
+							} else {
+								this.#month = Math.abs(12 - this.#month - newRestMonthes);
+
+								yearCount += 1;
+							}
+							let leftedMonthesToFullYear = 12 - this.#month;
+
+							this.increaseYear(Math.ceil((restMonthes - leftedMonthesToFullYear) / 12) + 1);
+						}
+					}
+				}
+				increaseDay(addDays) {
+					let monthCount = 0;
+					let yearCount = 0;
+					if (addDays < 30) {
+						if (this.#day + addDays <= 30) {
+							this.#day += addDays;
+							this.#month += monthCount;
+
+							return;
+						}
+						if (this.#day + addDays > 30) {
+							this.#day += (this.#day + addDays) % 30;
+							this.increaseMonth((this.#month += Math.ceil((this.#day + addDays) / 30)));
+
+							return;
+						}
+					}
+					if (addDays > 30) {
+						this.#day += (this.#day + addDays) % 30;
+
+						this.increaseMonth(Math.floor((this.#day + addDays) / 30));
+					}
+				}
+				increaseYear(addYear) {
+					this.Year += addYear;
+				}
+
+				deleteDay(deletedDays) {
+					let monthCount = 0;
+					let yearCount = 0;
+					if (this.#day - deletedDays > 0) {
+						this.#day -= deletedDays;
+					} else {
+						let leftDays = Math.abs(this.#day - deletedDays);
+
+						if (leftDays < 30) {
+							this.#day = 30 - leftDays;
+							monthCount += 1;
+							// deleteMonth(monthCount)
+						} else {
+							monthCount += Math.floor(leftDays / 30);
+							let restDays = leftDays - monthCount * 30;
+							this.#day = 30 - restDays;
+							// deleteMonth(monthCount)
+						}
+					}
+				}
+				deleteMonth(deletedMonth) {
+					let yearCount = 0;
+					if (this.#month - deletedMonth > 0) {
+						this.#month -= deletedMonth;
+					} else {
+						yearCount += 1;
+						let restMonthes = Math.abs(this.#month - deletedMonth);
+						if (restMonthes < 12) {
+							this.#month = 12 - restMonthes;
+
+							this.deleteYear(yearCount);
+						} else {
+							let fullYears = Math.floor(restMonthes / 12);
+							yearCount += fullYears;
+							let leftedMonthes = restMonthes - fullYears * 12;
+
+							this.#month = 12 - leftedMonthes;
+							this.deleteYear(yearCount);
+						}
+					}
+				}
+				deleteYear(deletedYear) {
+					this.Year -= deletedYear;
+				}
+				toString() {
+					return `День ${this.#day} Місяць ${this.#month} Рік ${this.#year}`;
+				}
+			}
+
+			let userDay = parseInt(prompt("Введіть день"));
+			let userMonth = parseInt(prompt("Введіть місяць"));
+			let userYear = parseInt(prompt("Введіть рік"));
+			let calendar = new ToDate(userDay, userMonth, userYear);
+			document.write(calendar);
+			document.write("<br>");
+			calendar.increaseDay(32);
+			document.write(calendar);
+			document.write("<br>");
+			calendar.increaseMonth(13);
+			document.write(calendar);
+			document.write("<br>");
+			calendar.increaseYear(30);
+			document.write(calendar);
+			document.write("<br>");
+			calendar.deleteDay(96);
+			document.write(calendar);
+			document.write("<br>");
+			calendar.deleteMonth(45);
+			document.write(calendar);
+			document.write("<br>");
+			calendar.deleteYear(45);
+			document.write(calendar);
+			document.write("<br>");
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
