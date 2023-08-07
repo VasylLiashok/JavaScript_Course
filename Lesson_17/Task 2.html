@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 17</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 17</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>Створити службове авто (водій, марка, номер). Створити клас таким чином, щоб можна було створити тільки один екземпляр цього класу.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			class Auto {
+				static AutoInfo;
+				constructor(driver, brand, num) {
+					if (Auto.AutoInfo) {
+						return Auto.AutoInfo;
+					}
+					this.driver = driver;
+					this.brand = brand;
+					this.num = num;
+					Auto.AutoInfo = this;
+				}
+			}
+			let auto = new Auto("Petro", "BMW", "NK25444");
+			console.log(auto);
+			let auto2 = new Auto("Ivan", "BMW", "NK25444");
+			console.log(auto2);
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

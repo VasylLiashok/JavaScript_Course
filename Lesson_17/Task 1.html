@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 17</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 17</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>
+							Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість
+							входжень деякого числа (статичні методи)
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			class MathOperations {
+				static getPlusNumbers(array) {
+					let result = array.reduce((counter, el) => (el > 0 ? counter + 1 : counter), 0);
+					return result;
+				}
+				static getMinusNumbers(array) {
+					let result = array.reduce((counter, el) => (el < 0 ? counter + 1 : counter), 0);
+					return result;
+				}
+				static getNumberCount(array, number) {
+					let result = array.reduce((counter, el) => (el === number ? counter + 1 : counter), 0);
+					return result;
+				}
+			}
+			let numbers = [-25, 25, 102, -780, 154, 154];
+			document.write(`Кількість додатних чисел ${MathOperations.getPlusNumbers(numbers)} <br>`);
+			document.write(`Кількість від’ємних чисел ${MathOperations.getMinusNumbers(numbers)} <br>`);
+			document.write(`Кількість повторення вказаного числа - ${MathOperations.getNumberCount(numbers, 154)} <br>`);
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

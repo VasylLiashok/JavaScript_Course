@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 17</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 17</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 3</h4>
+						<p>
+							Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь подію (це просто текст) і
+							також виводиться порядковий номер скільки раз вже нагадування було. Зробити так, щоб неможна було зробити одночасно декілька
+							об’єктів-нагадувачів. Методи зупинки таймера, метод зміни повідомлення без зупинки таймера.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			let newText = prompt("Введіть новий текст");
+			class Reminder {
+				static Note;
+				constructor(reminderText, intervalTime, newText) {
+					if (Reminder.Note) {
+						return Reminder.Note;
+					}
+					this.reminderText = reminderText;
+					this.intervalTime = intervalTime;
+					this.newText = newText;
+					Reminder.Note = this;
+					this.interval;
+				}
+
+				run(n = 1) {
+					this.interval = setTimeout(() => {
+						document.write(`${n} - ${this.reminderText} <br>`);
+						this.run(n + 1);
+					}, this.intervalTime);
+				}
+				stop() {
+					clearInterval(this.interval);
+				}
+				changeText() {
+					setTimeout(() => {
+						Reminder.Note.reminderText = this.newText;
+					}, 10000);
+				}
+			}
+			let reminder = new Reminder("Тут могла бути ваша реклама ", 1000, newText);
+			reminder.run();
+			reminder.changeText();
+			// reminder.stop();
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

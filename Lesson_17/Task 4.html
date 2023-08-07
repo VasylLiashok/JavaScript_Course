@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 17</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 17</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+						<p>
+							Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр,
+							видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки організувати додавання/вилучення книг та вибір
+							книг за назвою, за ПІБ автора, за видавництвом.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			class Book {
+				constructor(initData) {
+					Object.assign(this, initData);
+				}
+			}
+			let bookCollection = [
+				new Book({
+					authors: [
+						{
+							name: "J.R.R. Tolkien",
+							birthYear: 1918,
+							about: "english author",
+						},
+						{
+							name: "Stiven King",
+							birthYear: 1945,
+							about: "english author",
+						},
+					],
+					title: "Silmarilion",
+					genre: "fantasy",
+					publisher: {
+						name: "English house",
+						id: 45789511654,
+						fundationYear: 1999,
+					},
+				}),
+				new Book({
+					authors: [
+						{
+							name: "Jon Martin",
+							birthYear: 1948,
+							about: "english author",
+						},
+						{
+							name: "Uliss",
+							birthYear: 1964,
+							about: "english author",
+						},
+					],
+					title: "Good day",
+					genre: "fantasy",
+					publisher: {
+						name: "English house",
+						id: 45789511654,
+						fundationYear: 1999,
+					},
+				}),
+				new Book({
+					authors: [
+						{
+							name: "Henry Layon Oldi",
+							birthYear: 1987,
+							about: "ukrainian author",
+						},
+						{
+							name: "Robert Sanderson",
+							birthYear: 1986,
+							about: "english author",
+						},
+					],
+					title: "Stormlight archive",
+					genre: "historical",
+					publisher: {
+						name: "Ababagalamaga",
+						id: 894523123,
+						fundationYear: 2004,
+					},
+				}),
+				new Book({
+					authors: [
+						{
+							name: "Oskar Wilde",
+							birthYear: 1936,
+							about: "english author",
+						},
+						{
+							name: "William Shekspire",
+							birthYear: 1670,
+							about: "english author",
+						},
+					],
+					title: "King Gir",
+					genre: "romance",
+					publisher: {
+						name: "Star dust",
+						id: 1231158,
+						fundationYear: 1987,
+					},
+				}),
+			];
+			class Library {
+				constructor(bookCollection) {
+					this.bookCollection = bookCollection;
+				}
+				addBook(book) {
+					this.bookCollection.push(book);
+				}
+				removeBook(bookTitle) {
+					this.bookCollection = this.bookCollection.filter((book) => book.title !== bookTitle);
+				}
+				findBookPerTitle(bookTitle) {
+					return this.bookCollection.filter((book) => book.title === bookTitle);
+				}
+				findBookPerAutor(bookAuthor) {
+					let books = [];
+
+					this.bookCollection.forEach((book) => {
+						for (const author of book.authors) {
+							author.name === bookAuthor ? books.push(book) : null;
+						}
+					});
+					return books;
+					// return this.bookCollection.filter((book) => book.authors.filter((author) => author.name === bookAuthor));
+				}
+				findBookPerPublisher(publisher) {
+					return this.bookCollection.filter((book) => book.publisher.name === publisher);
+				}
+			}
+			let library = new Library(bookCollection);
+			console.log(library);
+			library.addBook(
+				new Book({
+					authors: [
+						{
+							name: "J.R.R. Tolkien",
+							birthYear: 1918,
+							about: "english author",
+						},
+					],
+					title: "Hobbit",
+					genre: "fantasy",
+					publisher: {
+						name: "English house",
+						id: 45789511654,
+						fundationYear: 1999,
+					},
+				})
+			);
+			console.log(library);
+			library.removeBook("Silmarilion");
+			console.log(library);
+			console.log(library.findBookPerTitle("Hobbit"));
+			console.log(library.findBookPerAutor("Robert Sanderson"));
+			console.log(library.findBookPerPublisher("Star dust"));
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
