@@ -60,27 +60,25 @@
 				increaseMonth(addMonth) {
 					let yearCount = 0;
 
-					if (this.#month + addMonth <= 12) {
-						this.#month += addMonth;
+					if (this.Month + addMonth <= 12) {
+						this.Month += addMonth;
 					} else {
-						let restMonthes = Math.abs(12 - this.#month - addMonth);
+						let restMonthes = Math.abs(12 - this.Month - addMonth);
 
 						if (restMonthes / 12 <= 1) {
 							this.increaseYear(1);
 
-							this.#month += restMonthes - 1;
-							console.log(this.#month);
+							this.Month += restMonthes - 1;
 						} else if (restMonthes / 12 > 1) {
 							let newRestMonthes = restMonthes % 12;
-							if (this.#month + newRestMonthes <= 12) {
-								this.#month += newRestMonthes - 1;
-								console.log(this.#month);
+							if (this.Month + newRestMonthes <= 12) {
+								this.Month += newRestMonthes - 1;
 							} else {
-								this.#month = Math.abs(12 - this.#month - newRestMonthes);
+								this.Month = Math.abs(12 - this.Month - newRestMonthes);
 
 								yearCount += 1;
 							}
-							let leftedMonthesToFullYear = 12 - this.#month;
+							let leftedMonthesToFullYear = 12 - this.Month;
 
 							this.increaseYear(Math.ceil((restMonthes - leftedMonthesToFullYear) / 12) + 1);
 						}
@@ -90,23 +88,23 @@
 					let monthCount = 0;
 					let yearCount = 0;
 					if (addDays < 30) {
-						if (this.#day + addDays <= 30) {
-							this.#day += addDays;
-							this.#month += monthCount;
+						if (this.Day + addDays <= 30) {
+							this.Day += addDays;
+							this.Month += monthCount;
 
 							return;
 						}
-						if (this.#day + addDays > 30) {
-							this.#day += (this.#day + addDays) % 30;
-							this.increaseMonth((this.#month += Math.ceil((this.#day + addDays) / 30)));
+						if (this.Day + addDays > 30) {
+							this.Day += (this.Day + addDays) % 30;
+							this.increaseMonth((this.Month += Math.ceil((this.Day + addDays) / 30)));
 
 							return;
 						}
 					}
 					if (addDays > 30) {
-						this.#day += (this.#day + addDays) % 30;
+						this.Day += (this.Day + addDays) % 30;
 
-						this.increaseMonth(Math.floor((this.#day + addDays) / 30));
+						this.increaseMonth(Math.floor((this.Day + addDays) / 30));
 					}
 				}
 				increaseYear(addYear) {
@@ -116,32 +114,32 @@
 				deleteDay(deletedDays) {
 					let monthCount = 0;
 					let yearCount = 0;
-					if (this.#day - deletedDays > 0) {
-						this.#day -= deletedDays;
+					if (this.Day - deletedDays > 0) {
+						this.Day -= deletedDays;
 					} else {
-						let leftDays = Math.abs(this.#day - deletedDays);
+						let leftDays = Math.abs(this.Day - deletedDays);
 
 						if (leftDays < 30) {
-							this.#day = 30 - leftDays;
+							this.Day = 30 - leftDays;
 							monthCount += 1;
-							// deleteMonth(monthCount)
+							this.deleteMonth(monthCount);
 						} else {
 							monthCount += Math.floor(leftDays / 30);
 							let restDays = leftDays - monthCount * 30;
-							this.#day = 30 - restDays;
-							// deleteMonth(monthCount)
+							this.Day = 30 - restDays;
+							this.deleteMonth(monthCount);
 						}
 					}
 				}
 				deleteMonth(deletedMonth) {
 					let yearCount = 0;
-					if (this.#month - deletedMonth > 0) {
-						this.#month -= deletedMonth;
+					if (this.Month - deletedMonth > 0) {
+						this.Month -= deletedMonth;
 					} else {
 						yearCount += 1;
-						let restMonthes = Math.abs(this.#month - deletedMonth);
+						let restMonthes = Math.abs(this.Month - deletedMonth);
 						if (restMonthes < 12) {
-							this.#month = 12 - restMonthes;
+							this.Month = 12 - restMonthes;
 
 							this.deleteYear(yearCount);
 						} else {
@@ -149,7 +147,7 @@
 							yearCount += fullYears;
 							let leftedMonthes = restMonthes - fullYears * 12;
 
-							this.#month = 12 - leftedMonthes;
+							this.Month = 12 - leftedMonthes;
 							this.deleteYear(yearCount);
 						}
 					}
@@ -158,7 +156,7 @@
 					this.Year -= deletedYear;
 				}
 				toString() {
-					return `День ${this.#day} Місяць ${this.#month} Рік ${this.#year}`;
+					return `День ${this.Day} Місяць ${this.Month} Рік ${this.Year}`;
 				}
 			}
 
