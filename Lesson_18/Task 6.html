@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 18</title>
+		<style>
+			input {
+				max-width: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 18</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 6</h4>
+						<p>
+							Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить
+							оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+						</p>
+					</div>
+					<div class="calc">
+						<form action="#" class="form">
+							<div class="form__row">
+								<div class="form__label">Кількість оцінок</div>
+								<input id="marks" autocomplete="off" value="1" type="number" placeholder="" class="form__input" />
+							</div>
+							<div class="form__row">
+								<button type="button" class="button button-create">Створити таблицю</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				const button = document.querySelector(".button-create");
+				const container = document.querySelector(".calc");
+				button.onclick = createTable;
+				function createTable() {
+					let marksCount = document.querySelector("#marks").value;
+
+					if (!document.querySelector("table")) {
+						const table = document.createElement("table");
+						let rowCount = 1;
+
+						while (marksCount > 10) {
+							marksCount -= 10;
+							rowCount++;
+						}
+
+						for (let i = 0; i < rowCount; i++) {
+							let columnCount;
+							let row = document.createElement("tr");
+							if (i === rowCount - 1) columnCount = marksCount;
+							else columnCount = 10;
+							for (let j = 0; j < columnCount; j++) {
+								let cell = document.createElement("td");
+								cell.innerHTML = `<input autocomplete="off" value="" max='12' type="number" class="form__input input-marks" />`;
+								row.append(cell);
+							}
+							table.append(row);
+						}
+						container.append(table);
+						const summButton = document.createElement("button");
+						summButton.classList.add("button-summ");
+						summButton.innerText = "Отримати результат";
+						container.append(summButton);
+						summButton.onclick = showAverageMark;
+					}
+				}
+
+				function showAverageMark() {
+					let averageMark = getSumm();
+					const result = document.createElement("p");
+
+					result.innerText = `summ = ${averageMark}`;
+					container.append(result);
+				}
+				function getSumm() {
+					const marks = document.querySelectorAll(".input-marks");
+					let summ = 0;
+					for (const mark of marks) {
+						if (mark.value === "" || mark.value <= 0) {
+							mark.value = 1;
+						} else if (mark.value > 12) {
+							mark.value = 12;
+						}
+						summ += parseInt(mark.value);
+					}
+					return summ / marks.length;
+				}
+			};
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

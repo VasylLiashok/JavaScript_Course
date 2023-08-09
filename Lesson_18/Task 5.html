@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 18</title>
+		<style>
+			.calc {
+			}
+			.form {
+			}
+			.form__row {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 10px;
+			}
+			.form__label {
+				font-weight: 600;
+			}
+			.form__input {
+			}
+			.form__button {
+			}
+			table {
+				border: 2px solid #000;
+			}
+			td {
+				border: 1px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 18</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 5</h4>
+						<p>Користувач задає кількість рядків і стовпців. Відобразити таблицю, у клітинках якої знаходяться числа 1, 2, 3, …</p>
+					</div>
+					<div class="calc">
+						<form action="#" class="form">
+							<div class="form__row">
+								<div class="form__label">Кількість рядків</div>
+								<input id="rows" autocomplete="off" value="1" type="number" placeholder="" class="form__input" />
+							</div>
+
+							<div class="form__row">
+								<div class="form__label">Кількість стовпців</div>
+								<input id="columns" autocomplete="off" value="1" type="number" placeholder="" class="form__input" />
+							</div>
+							<div class="form__row">
+								<button type="button" class="button">Створити таблицю</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+
+			window.onload = () => {
+				const button = document.querySelector("button");
+				button.onclick = createTable;
+				function createTable() {
+					const rowsCount = document.querySelector("#rows").value;
+					const columnsCount = document.querySelector("#columns").value;
+					const container = document.querySelector(".calc");
+					const table = document.createElement("table");
+					let counter = 1;
+					for (let i = 0; i < rowsCount; i++) {
+						let row = document.createElement("tr");
+						for (let j = 0; j < columnsCount; j++) {
+							let cell = document.createElement("td");
+							cell.innerText = counter;
+							counter++;
+							row.append(cell);
+						}
+						table.append(row);
+					}
+					container.append(table);
+				}
+			};
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

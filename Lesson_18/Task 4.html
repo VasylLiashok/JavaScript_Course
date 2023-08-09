@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 18</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 18</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+						<p>
+							Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих
+							div (їх треба створити і додати на сторінку)
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			let wishes = [
+				"Закінчити курс",
+				"Отримати хороші знання",
+				"Мир в країні",
+				"Холодне морозиво",
+				"Джордж Мартін дописав 'Вітри Зими'",
+				"Поїхати на море",
+				"Купити машину",
+			];
+			window.onload = createHTML;
+			const divCount = 3;
+			function createHTML() {
+				const container = document.querySelector(".lesson__body");
+				let fulfilledWishes = [];
+				for (let i = 0; i < divCount; ) {
+					let wishIndex = getRandomNum(wishes);
+
+					if (!fulfilledWishes.includes(wishIndex)) {
+						fulfilledWishes.push(wishIndex);
+						let wish = wishes[wishIndex];
+						const div = document.createElement("div");
+						div.innerText = wish;
+						container.append(div);
+						i++;
+					}
+				}
+			}
+			function getRandomNum(array) {
+				return Math.floor(Math.random() * array.length);
+			}
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

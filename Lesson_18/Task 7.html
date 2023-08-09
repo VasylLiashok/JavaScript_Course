@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 18</title>
+		<style>
+			.calc {
+			}
+			.form {
+			}
+			.form__row {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 10px;
+			}
+			.form__label {
+				font-weight: 600;
+			}
+			.form__input {
+			}
+			.form__button {
+			}
+			table {
+				border: 2px solid #000;
+			}
+			td {
+				border: 1px solid #000;
+			}
+			.form__block {
+				border-bottom: 2px solid #000;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 18</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 7</h4>
+						<p>
+							Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий
+							список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio buttons). Ціни визначте самі.
+							Підрахувати загальну вартість.
+						</p>
+					</div>
+					<div class="calc">
+						<form action="#" class="form">
+							<div class="form__block">
+								1-й етап
+								<div class="form__row">
+									<div class="form__label">Вид транспорту</div>
+									<select name="form[]" class="select">
+										<option value="300" selected>Авто</option>
+										<option value="800">Літак</option>
+										<option value="250">Автобус</option>
+									</select>
+								</div>
+								<div class="form__row">
+									<div class="form__label">Харчування</div>
+									<div class="checkbox">
+										<input id="c_1" class="checkbox__input" type="checkbox" value="90" name="form[meal]" />
+										<label for="c_1" class="checkbox__label"><span class="checkbox__text">Сніданок</span></label>
+									</div>
+									<div class="checkbox">
+										<input id="c_2" class="checkbox__input" type="checkbox" value="150" name="form[meal]" />
+										<label for="c_2" class="checkbox__label"><span class="checkbox__text">Обід</span></label>
+									</div>
+									<div class="checkbox">
+										<input id="c_3" class="checkbox__input" type="checkbox" value="110" name="form[meal]" />
+										<label for="c_3" class="checkbox__label"><span class="checkbox__text">Вечеря</span></label>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__label">Оберіть гіда</div>
+
+									<div class="options__item">
+										<input id="o_1" class="options__input" checked type="radio" value="420" name="option_1" />
+										<label for="o_1" class="options__label"><span class="options__text">Oleh</span></label>
+									</div>
+									<div class="options__item">
+										<input id="o_2" class="options__input" type="radio" value="590" name="option_1" />
+										<label for="o_2" class="options__label"><span class="options__text">Oksana</span></label>
+									</div>
+									<div class="options__item">
+										<input id="o_3" class="options__input" type="radio" value="780" name="option_1" />
+										<label for="o_3" class="options__label"><span class="options__text">Iryna</span></label>
+									</div>
+								</div>
+							</div>
+							<div class="form__block">
+								2-й етап
+								<div class="form__row">
+									<div class="form__label">Вид транспорту</div>
+									<select name="form[]" class="select">
+										<option value="450" selected>Авто</option>
+										<option value="950">Літак</option>
+										<option value="375">Автобус</option>
+									</select>
+								</div>
+								<div class="form__row">
+									<div class="form__label">Харчування</div>
+									<div class="checkbox">
+										<input id="q_1" class="checkbox__input" type="checkbox" value="90" name="form[meal-2]" />
+										<label for="q_1" class="checkbox__label"><span class="checkbox__text">Сніданок</span></label>
+									</div>
+									<div class="checkbox">
+										<input id="q_2" class="checkbox__input" type="checkbox" value="150" name="form[meal-2]" />
+										<label for="q_2" class="checkbox__label"><span class="checkbox__text">Обід</span></label>
+									</div>
+									<div class="checkbox">
+										<input id="q_3" class="checkbox__input" type="checkbox" value="110" name="form[meal-2]" />
+										<label for="q_3" class="checkbox__label"><span class="checkbox__text">Вечеря</span></label>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__label">Оберіть гіда</div>
+
+									<div class="options__item">
+										<input id="n_1" class="options__input" checked type="radio" value="420" name="option_2" />
+										<label for="n_1" class="options__label"><span class="options__text">Іван</span></label>
+									</div>
+									<div class="options__item">
+										<input id="n_2" class="options__input" type="radio" value="590" name="option_2" />
+										<label for="n_2" class="options__label"><span class="options__text">Марія</span></label>
+									</div>
+									<div class="options__item">
+										<input id="n_3" class="options__input" type="radio" value="780" name="option_2" />
+										<label for="n_3" class="options__label"><span class="options__text">Петро</span></label>
+									</div>
+								</div>
+							</div>
+							<div class="form__block">
+								3-й етап
+								<div class="form__row">
+									<div class="form__label">Вид транспорту</div>
+									<select name="form[]" class="select">
+										<option value="450" selected>Авто</option>
+										<option value="950">Літак</option>
+										<option value="375">Автобус</option>
+									</select>
+								</div>
+								<div class="form__row">
+									<div class="form__label">Харчування</div>
+									<div class="checkbox">
+										<input id="е_1" class="checkbox__input" type="checkbox" value="90" name="form[meal-3]" />
+										<label for="e_1" class="checkbox__label"><span class="checkbox__text">Сніданок</span></label>
+									</div>
+									<div class="checkbox">
+										<input id="e_2" class="checkbox__input" type="checkbox" value="150" name="form[meal-3]" />
+										<label for="e_2" class="checkbox__label"><span class="checkbox__text">Обід</span></label>
+									</div>
+									<div class="checkbox">
+										<input id="e_3" class="checkbox__input" type="checkbox" value="110" name="form[meal-3]" />
+										<label for="e_3" class="checkbox__label"><span class="checkbox__text">Вечеря</span></label>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__label">Оберіть гіда</div>
+
+									<div class="options__item">
+										<input id="i_1" class="options__input" checked type="radio" value="420" name="option_3" />
+										<label for="i_1" class="options__label"><span class="options__text">Жанна</span></label>
+									</div>
+									<div class="options__item">
+										<input id="i_2" class="options__input" type="radio" value="590" name="option_3" />
+										<label for="i_2" class="options__label"><span class="options__text">Федір</span></label>
+									</div>
+									<div class="options__item">
+										<input id="i_3" class="options__input" type="radio" value="780" name="option_3" />
+										<label for="i_3" class="options__label"><span class="options__text">Ганна</span></label>
+									</div>
+								</div>
+							</div>
+						</form>
+						<div class="summ"></div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+
+			window.onload = () => {
+				const form = document.querySelector(".form");
+				const container = document.querySelector(".calc");
+				form.onchange = showSumm;
+				function showSumm() {
+					let summ = getSumm();
+					const totalSumm = document.querySelector(".summ");
+					totalSumm.innerText = `Загальна вартість поїздки ${summ}грн`;
+				}
+				function getSumm() {
+					const stages = document.querySelectorAll(".form__block");
+					let totalSumm = 0;
+					stages.forEach((stage) => {
+						const selectValue = parseInt(stage.querySelector("select").value);
+						const checkboxes = stage.querySelectorAll("input[type='checkbox']");
+						let checkboxesSumm = 0;
+						for (const checkbox of checkboxes) {
+							if (checkbox.checked) {
+								checkboxesSumm += parseInt(checkbox.value);
+							}
+						}
+						const radioValue = parseInt(stage.querySelector("input[type='radio']:checked").value);
+						let stageSumm = selectValue + checkboxesSumm + radioValue;
+
+						totalSumm += stageSumm;
+					});
+					return totalSumm;
+				}
+			};
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 18</title>
+		<style>
+			.calc {
+			}
+			.form {
+			}
+			.form__row {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 10px;
+			}
+			.form__label {
+				font-weight: 600;
+			}
+			.form__input {
+			}
+			.form__button {
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 18</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 3</h4>
+						<p>Користувач задає рік народження. Визначити кількість років користувача.</p>
+						<div class="calc">
+							<form action="#" class="form">
+								<div class="form__row">
+									<div class="form__label">Введіть ваш рік народження</div>
+									<input id="birth_year" autocomplete="off" value="" type="number" placeholder="" class="form__input" />
+								</div>
+
+								<div class="form__row">
+									<div class="form__label">Ваш вік</div>
+									<input id="age" autocomplete="off" value="" type="number" placeholder="" class="form__input" />
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			let birthYear = document.querySelector("#birth_year");
+			let age = document.querySelector("#age");
+			const CURRENT_YEAR = 2023;
+			birthYear.onchange = getAge;
+			function getAge() {
+				age.value = CURRENT_YEAR - birthYear.value;
+			}
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

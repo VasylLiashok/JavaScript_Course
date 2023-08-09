@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 18</title>
+		<style>
+			.calc {
+			}
+			.form {
+			}
+			.form__row {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 10px;
+			}
+			.form__label {
+				font-weight: 600;
+			}
+			.form__input {
+			}
+			.form__button {
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 18</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>Зробити конвертер валют (курси валют – константи у скрипті)</p>
+						<div class="calc">
+							<form action="#" class="form">
+								<div class="form__row">
+									<div class="form__label">Сума в гривнях</div>
+									<input id="grn" autocomplete="off" value="" type="number" placeholder="" class="form__input" />
+								</div>
+								<div class="form__row">
+									<button type="button" id="convert" class="form__button">Конвертувати</button>
+								</div>
+								<div class="form__row">
+									<div class="form__label">Сума в євро</div>
+									<input id="euro" autocomplete="off" value="" type="number" placeholder="" class="form__input" />
+								</div>
+
+								<div class="form__row">
+									<div class="form__label">Сума в доларах</div>
+									<input id="dol" autocomplete="off" value="" type="number" placeholder="" class="form__input" />
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			const DOLAR_RATE = 36.78;
+			const EURO_RATE = 39.42;
+			let convert = document.getElementById("convert");
+			convert.onclick = convertMoney;
+			function convertMoney() {
+				let grn = parseFloat(document.getElementById("grn").value),
+					euro = document.getElementById("euro"),
+					dol = document.getElementById("dol");
+				euro.value = (grn / EURO_RATE).toFixed(2);
+				dol.value = (grn / DOLAR_RATE).toFixed(2);
+			}
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 18</title>
+		<style>
+			.calc {
+			}
+			.form {
+			}
+			.form__row {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 10px;
+			}
+			.form__label {
+				font-weight: 600;
+			}
+			.form__input {
+			}
+			.form__button {
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 18</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>Розробити калькулятор</p>
+						<div class="calc">
+							<form action="#" class="form">
+								<div class="form__row">
+									<div class="form__label">First number</div>
+									<input id="first_number" autocomplete="off" type="number" placeholder="" class="form__input" />
+								</div>
+								<div class="form__row">
+									<div class="form__label">Second number</div>
+									<input id="second_number" autocomplete="off" type="number" placeholder="" class="form__input" />
+								</div>
+								<div class="form__row">
+									<button type="button" id="plus" class="form__button">Додати</button>
+									<button type="button" id="minus" class="form__button">Відняти</button>
+									<button type="button" id="multiplay" class="form__button">Помножити</button>
+									<button type="button" id="divide" class="form__button">Поділити</button>
+								</div>
+								<div class="form__row">
+									<div class="form__label">Result</div>
+									<input id="result" autocomplete="off" value="" type="number" placeholder="" class="form__input" />
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			const result = document.getElementById("result"),
+				plusButton = document.getElementById("plus"),
+				minusButton = document.getElementById("minus"),
+				multiplayButton = document.getElementById("multiplay"),
+				divideButton = document.getElementById("divide");
+
+			function getSumm() {
+				let firstNumber = parseFloat(document.getElementById("first_number").value),
+					secondNumber = parseFloat(document.getElementById("second_number").value);
+				return firstNumber + secondNumber;
+			}
+			function getSubtraction() {
+				let firstNumber = parseFloat(document.getElementById("first_number").value),
+					secondNumber = parseFloat(document.getElementById("second_number").value);
+				return firstNumber - secondNumber;
+			}
+			function getMultiplay() {
+				let firstNumber = parseFloat(document.getElementById("first_number").value),
+					secondNumber = parseFloat(document.getElementById("second_number").value);
+				return firstNumber * secondNumber;
+			}
+			function getDivide() {
+				let firstNumber = parseFloat(document.getElementById("first_number").value),
+					secondNumber = parseFloat(document.getElementById("second_number").value);
+				return firstNumber / secondNumber;
+			}
+			plusButton.onclick = () => (result.value = getSumm());
+			minusButton.onclick = () => (result.value = getSubtraction());
+			multiplayButton.onclick = () => (result.value = getMultiplay());
+			divideButton.onclick = () => (result.value = getDivide());
+			//========================================================================================================================================================
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
