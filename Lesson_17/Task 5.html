@@ -31,125 +31,106 @@
 		</main>
 		<script>
 			//========================================================================================================================================================
-			class MultChecker {
-				constructor() {}
-				getRandomNumber() {
-					return 1 + Math.floor(Math.random() * 9);
-				}
-				getAnswer() {
-					let randomNumber1 = this.getRandomNumber();
-					let randomNumber2 = this.getRandomNumber();
-					let computedAnswer = randomNumber1 * randomNumber2;
-					let userAnswer = parseInt(prompt(`Введіть результат множення ${randomNumber1} на ${randomNumber2}`));
-					return [randomNumber1, randomNumber2, userAnswer, computedAnswer];
+			class TestData {
+				constructor(testResult) {
+					Object.assign(this, testResult);
 				}
 
-				run() {
-					let result = this.getAnswer();
-					return {
-						firstNum: result[0],
-						secondNum: result[1],
-						operation: "*",
-						userAnswer: result[2],
-						correctAnswer: result[3],
-					};
+				toString() {
+					return `Перше число - ${this.firstNum}, Друге число - ${this.secondNum}, Операція - ${this.operation}, Відповідь користувача - ${this.userAnswer}, Правильна відповідь - ${this.computedAnswer}<br>`;
+				}
+			}
+			class MultChecker {
+				constructor(minNumber = 0, maxNumber = 10) {
+					this.minNumber = minNumber;
+					this.maxNumber = maxNumber;
+				}
+				getRandomNumber(minNumber, maxNumber) {
+					minNumber ??= this.minNumber;
+					maxNumber ??= this.maxNumber;
+					return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1));
+				}
+				getAnswer() {
+					let firstNum = this.getRandomNumber();
+					let secondNum = this.getRandomNumber();
+					let computedAnswer = firstNum * secondNum;
+					let userAnswer = parseInt(prompt(`Введіть результат множення ${firstNum} на ${secondNum}`));
+					return new TestData({ firstNum, secondNum, operation: "*", computedAnswer, userAnswer });
 				}
 			}
 			class AddChecker {
-				constructor() {}
-				getRandomNumber() {
-					return 1 + Math.floor(Math.random() * 9);
+				constructor(minNumber = 0, maxNumber = 10) {
+					this.minNumber = minNumber;
+					this.maxNumber = maxNumber;
+				}
+				getRandomNumber(minNumber, maxNumber) {
+					minNumber ??= this.minNumber;
+					maxNumber ??= this.maxNumber;
+					return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1));
 				}
 				getAnswer() {
-					let randomNumber1 = this.getRandomNumber();
-					let randomNumber2 = this.getRandomNumber();
-					let computedAnswer = randomNumber1 + randomNumber2;
-					let userAnswer = parseInt(prompt(`Введіть результат додавання ${randomNumber1} та ${randomNumber2}`));
-					return [randomNumber1, randomNumber2, userAnswer, computedAnswer];
+					let firstNum = this.getRandomNumber();
+					let secondNum = this.getRandomNumber();
+					let computedAnswer = firstNum + secondNum;
+					let userAnswer = parseInt(prompt(`Введіть результат додавання ${firstNum} та ${secondNum}`));
+					return new TestData({ firstNum, secondNum, operation: "+", computedAnswer, userAnswer });
 				}
+			}
 
-				run() {
-					let result = this.getAnswer();
-					return {
-						firstNum: result[0],
-						secondNum: result[1],
-						operation: "+",
-						userAnswer: result[2],
-						correctAnswer: result[3],
-					};
-				}
-			}
-			class TestData {
-				constructor() {
-					this.multiplyResult = new MultChecker();
-					this.summResult = new AddChecker();
-				}
-				getResults() {
-					let result = [this.multiplyResult.run(), this.summResult.run()];
-					return result;
-				}
-			}
 			class History {
 				static TestHistory;
-				constructor(array) {
+				constructor() {
 					if (History.TestHistory) {
 						return History.TestHistory;
 					}
-					this.testResults = array;
+					this.testResults = [];
 					History.TestHistory = this;
+				}
+				addResults(testObj) {
+					this.testResults.push(new TestData(testObj));
+				}
+				showHistory() {
+					for (const result of this.testResults) {
+						document.write(result);
+					}
 				}
 			}
 
 			class TestManager {
-				constructor(timeInterval, quantity, object) {
-					this.multiplyResult = new MultChecker();
-					this.summResult = new AddChecker();
+				constructor(timeInterval, quantity, minNumber = 0, maxNumber = 10) {
+					this.multiplyResult = new MultChecker(minNumber, maxNumber);
+					this.summResult = new AddChecker(minNumber, maxNumber);
 					this.timeInterval = timeInterval;
 					this.quantity = quantity;
-					this.object = object;
+					this.history = new History();
 				}
 				getRandomNumber() {
 					return Math.floor(Math.random() * 2);
 				}
 				chooseMethod() {
 					let result;
-					if (this.getRandomNumber() === 1) result = this.multiplyResult.run();
-					else result = this.summResult.run();
-					return result;
+					if (this.getRandomNumber() === 1) result = this.multiplyResult.getAnswer();
+					else result = this.summResult.getAnswer();
+					this.history.addResults(result);
 				}
-				addResults() {
-					this.object.push(this.chooseMethod());
-				}
-				showHistory() {
-					for (const result of this.object) {
-						document.write(
-							`Перше число - ${result.firstNum}, Друге число - ${result.secondNum}, Операція - ${result.operation}, Відповідь користувача - ${result.userAnswer}, Правильна відповідь - ${result.correctAnswer}<br>`
-						);
-					}
-				}
+
 				run() {
 					if (this.quantity > 0) {
 						setTimeout(() => {
-							this.addResults();
+							this.chooseMethod();
 							this.run((this.quantity -= 1));
 						}, this.timeInterval);
 					}
 					if (this.quantity === 0) {
-						this.showHistory();
+						this.history.showHistory();
 					}
 				}
 			}
-			let testResults = [];
+
 			let interval = parseInt(prompt("Введіть час інтервалу між прикладами в мілісекундах"));
 			let taskCount = parseInt(prompt("Введіть кількість прикладів"));
-			let testManager = new TestManager(interval, taskCount, testResults);
-
+			let testManager = new TestManager(interval, taskCount);
 			testManager.run();
-			let history = new History(testResults);
-			console.log(history);
-
-			// let test = new TestData();
-			// console.log(test.getResults());
 
 			//========================================================================================================================================================
 		</script>
