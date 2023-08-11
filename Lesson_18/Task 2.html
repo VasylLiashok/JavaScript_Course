@@ -35,7 +35,7 @@
 					<div class="lesson__row lesson__row-1">
 						<h4 class="lesson__subtitle">Task 2</h4>
 						<p>Зробити конвертер валют (курси валют – константи у скрипті)</p>
-						<div class="calc">
+						<!-- <div class="calc">
 							<form action="#" class="form">
 								<div class="form__row">
 									<div class="form__label">Сума в гривнях</div>
@@ -54,7 +54,7 @@
 									<input id="dol" autocomplete="off" value="" type="number" placeholder="" class="form__input" />
 								</div>
 							</form>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -63,16 +63,109 @@
 			//========================================================================================================================================================
 			const DOLAR_RATE = 36.78;
 			const EURO_RATE = 39.42;
-			let convert = document.getElementById("convert");
-			convert.onclick = convertMoney;
-			function convertMoney() {
-				let grn = parseFloat(document.getElementById("grn").value),
-					euro = document.getElementById("euro"),
-					dol = document.getElementById("dol");
-				euro.value = (grn / EURO_RATE).toFixed(2);
-				dol.value = (grn / DOLAR_RATE).toFixed(2);
-			}
+			// let convert = document.getElementById("convert");
+			// convert.onclick = convertMoney;
+			// function convertMoney() {
+			// 	let grn = parseFloat(document.getElementById("grn").value),
+			// 		euro = document.getElementById("euro"),
+			// 		dol = document.getElementById("dol");
+			// 	euro.value = (grn / EURO_RATE).toFixed(2);
+			// 	dol.value = (grn / DOLAR_RATE).toFixed(2);
+			// }
+			class Converter {
+				constructor(dolarRate, euroRate) {
+					this.dolarRate = dolarRate;
+					this.euroRate = euroRate;
+				}
+				render(parentElement) {
+					const calc = document.createElement("div");
+					calc.className = "calc";
+					this.grn = new MoneyField("Сума в гривнях", "grn", ".calc");
+					this.euro = new MoneyField("Сума в євро", "euro", ".calc");
+					this.dol = new MoneyField("Сума в доларах", "dol", ".calc");
+					this.button = new ConvertButton("Конвертувати", "convert", ".calc");
+					if (parentElement) {
+						document.querySelector(parentElement).append(calc);
+					}
 
+					calc.append(this.grn.render());
+					calc.append(this.button.render());
+					calc.append(this.euro.render());
+					calc.append(this.dol.render());
+				}
+				convertMoney() {
+					const button = document.querySelector(`#${this.button.id}`);
+					button.onclick = () => {
+						this.euro.Value = (this.grn.Value / this.euroRate).toFixed(2);
+						this.dol.Value = (this.grn.Value / this.dolarRate).toFixed(2);
+					};
+					// this.button.convert(this.grn.Value, [this.euro.Val, this.dol.Val]);
+				}
+			}
+			class MoneyField {
+				#inputValue;
+				constructor(title, id, container) {
+					this.title = title;
+					this.id = id;
+					this.container = container;
+				}
+				render() {
+					const block = document.createElement("div");
+					block.className = "form__row";
+					const label = document.createElement("label");
+					label.className = "form__label";
+					label.innerText = this.title;
+					block.append(label);
+					this.input = document.createElement("input");
+					this.input.setAttribute("id", this.id);
+					this.input.setAttribute("type", "number");
+					this.input.setAttribute("value", 1);
+					this.input.className = "form__input";
+					this.input.oninput = () => {
+						this.Value = this.input.value;
+					};
+					block.append(this.input);
+					if (this.container) {
+						document.querySelector(this.container).append(block);
+					}
+					return block;
+				}
+				get Value() {
+					return this.#inputValue;
+				}
+				set Value(newValue) {
+					if (newValue <= 0) throw new Error("Некоректна сума");
+					this.#inputValue = newValue;
+					this.input.value = newValue;
+				}
+			}
+			class ConvertButton {
+				constructor(title, id, container) {
+					this.title = title;
+					this.id = id;
+					this.container = container;
+				}
+				render() {
+					const block = document.createElement("div");
+					block.className = "form__row";
+					this.button = document.createElement("button");
+					this.button.setAttribute("id", this.id);
+					this.button.innerText = this.title;
+					this.button.className = "form__button";
+					block.append(this.button);
+
+					if (this.container) {
+						document.querySelector(this.container).append(block);
+					}
+					return block;
+				}
+				// convert(startMoney, moneyToChange) {
+				// 	this.button.onclick = (startMoney, moneyToChange) => console.log("123143242");
+				// }
+			}
+			const converter = new Converter(DOLAR_RATE, EURO_RATE);
+			converter.render(".lesson__row-1");
+			converter.convertMoney();
 			//========================================================================================================================================================
 		</script>
 	</body>
