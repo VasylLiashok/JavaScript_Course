@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 19</title>
+		<style>
+			* {
+				text-decoration: none;
+			}
+			.lesson__cards {
+				display: flex;
+				align-items: flex-start;
+				gap: 20px;
+			}
+			.card {
+				display: flex;
+				flex-direction: column;
+				max-width: 360px;
+				border: 1px solid transparent;
+				transition: all 0.3s;
+			}
+			.card__image {
+				position: relative;
+				padding-bottom: 80%;
+			}
+			.card:hover img {
+				transform: scale(1);
+			}
+			.card__image img {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				object-fit: contain;
+				transform: scale(0.9);
+				will-change: transform;
+				transition: all 0.3s;
+			}
+			.card__title {
+				font-size: 18px;
+				margin-bottom: 15px;
+				padding: 0 10px;
+				color: #000;
+			}
+			.card__price {
+				font-size: 22px;
+				color: red;
+				padding: 0 10px;
+			}
+			.selected {
+				border: 1px solid green;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 19</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 5</h4>
+						<p>
+							Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити toogle з класом вибраного
+							елемента)
+						</p>
+					</div>
+					<div class="lesson__cards"></div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+
+			window.onload = () => {
+				class ProductCard {
+					constructor({ title, url, imageSrc, price }) {
+						this.title = title;
+						this.url = url;
+						this.imageSrc = imageSrc;
+						this.price = price;
+					}
+					render(container) {
+						const card = document.createElement("a");
+						card.setAttribute("href", this.url);
+						card.className = "card";
+						const imageWrapper = document.createElement("div");
+						imageWrapper.className = "card__image";
+						const image = document.createElement("img");
+						image.setAttribute("src", this.imageSrc);
+						imageWrapper.append(image);
+						card.append(imageWrapper);
+						const title = document.createElement("h2");
+						title.className = "card__title";
+						title.innerText = this.title;
+						card.append(title);
+						const price = document.createElement("div");
+						price.className = "card__price";
+						price.innerText = this.price;
+						card.append(price);
+						if (container) {
+							document.querySelector(container).append(card);
+						}
+						card.onclick = this.chooseProduct.bind(this);
+						return card;
+					}
+					chooseProduct(e) {
+						const target = e.target;
+						e.preventDefault();
+						const card = target.closest(".card");
+						if (document.querySelector(".card.selected")) {
+							document.querySelector(".card.selected").classList.toggle("selected");
+						}
+						card.classList.toggle("selected");
+					}
+				}
+
+				let products = [
+					{
+						title: "Asus Aspire 456",
+						url: "https://www.asus.com/",
+						imageSrc: "/01.webp",
+						price: 19877,
+					},
+					{
+						title: "Asus Aspire 897",
+						url: "https://www.asus.com/",
+						imageSrc: "/02.webp",
+						price: 18798,
+					},
+					{
+						title: "Asus Aspire 2647",
+						url: "https://www.asus.com/",
+						imageSrc: "/03.webp",
+						price: 34598,
+					},
+					{
+						title: "Asus Aspire 2656",
+						url: "https://www.asus.com/",
+						imageSrc: "/04.webp",
+						price: 26777,
+					},
+				];
+				for (const product of products) {
+					new ProductCard(product).render(".lesson__cards");
+				}
+			};
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

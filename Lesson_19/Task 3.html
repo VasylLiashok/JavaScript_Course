@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 19</title>
+		<style>
+			.list__wrapper {
+				display: flex;
+				gap: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 19</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 3</h4>
+						<p>
+							Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку випадкова від 1 до 10,
+							елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною кількістю елементів зафарбувати у зелений колір,
+							інші у червоний.
+						</p>
+					</div>
+					<div class="list__wrapper"></div>
+					<button type="button" class="button">Зафарбувати</button>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				function getRandomValue(minVal, maxVal) {
+					return minVal + Math.floor(Math.random() * (maxVal - minVal + 1));
+				}
+				function createList(container) {
+					const list = document.createElement("ol");
+					const liCount = getRandomValue(1, 10);
+					for (let i = 0; i < liCount; i++) {
+						const li = document.createElement("li");
+						li.innerText = getRandomValue(1, 100);
+						list.append(li);
+					}
+					if (container) {
+						document.querySelector(container).append(list);
+					}
+				}
+				const listNumber = 5;
+				function createLists(num) {
+					for (let list = 0; list < num; list++) {
+						createList(".list__wrapper");
+					}
+				}
+				createLists(listNumber);
+				const button = document.querySelector(".button");
+				button.onclick = changeColor;
+				function changeColor() {
+					const lists = document.querySelectorAll("ol");
+					for (const list of lists) {
+						if (list.children.length % 2 === 0) {
+							list.style.color = "green";
+						} else {
+							list.style.color = "red";
+						}
+					}
+				}
+			};
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

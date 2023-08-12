@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 19</title>
+		<style>
+			body {
+				background-color: #000;
+				color: #fff;
+			}
+			.snow {
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background-color: #fff;
+				top: 0;
+				left: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 19</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 7</h4>
+						<p>
+							Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану (top =0) і з випадковою швидкістю рухається вниз (у setInterval
+							викликати метод, у якому додавати крок до top). Як тільки сніжинка досягає нижньої частини екрану (top>maxTop) вона знову повинна
+							з’явитись у верхній частині екрану (top=0)
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="snow"></div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+
+			window.onload = () => {
+				class Snow {
+					constructor(obj, minVal = 10, maxVal = 30) {
+						this.minVal = minVal;
+						this.maxVal = maxVal;
+						this.obj = obj;
+					}
+					getRandomValue(minVal, maxVal) {
+						return minVal + Math.floor(Math.random() * (maxVal - minVal + 1));
+					}
+					snowFall() {
+						let snowTop = 0;
+						let windowHeight = window.innerHeight;
+						setInterval(() => {
+							snowTop += 1;
+							if (windowHeight < snowTop) {
+								this.obj.style.top = 0;
+								snowTop = 0;
+								setInterval(() => {
+									this.obj.style.top = snowTop + "px";
+								}, this.getRandomValue(this.minVal, this.maxVal));
+							} else {
+								this.obj.style.top = snowTop + "px";
+								snowTop = parseInt(this.obj.style.top);
+							}
+						}, this.getRandomValue(this.minVal, this.maxVal));
+
+						snowTop = 0;
+					}
+				}
+				const snow = document.querySelector(".snow");
+				let snowFall = new Snow(snow);
+				snowFall.snowFall();
+			};
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 19</title>
+		<style>
+			svg {
+				width: 32px;
+				height: 32px;
+
+				cursor: pointer;
+			}
+			.green svg {
+				fill: green;
+			}
+			.red svg {
+				fill: red;
+			}
+			button {
+				background: none;
+				border: none;
+			}
+			ul {
+				border: 1px solid #000;
+				padding: 0;
+				margin: 0;
+			}
+			li {
+				padding: 10px 15px;
+				border: 1px solid #000;
+			}
+			.list__wrapper {
+				max-width: 20%;
+				text-align: center;
+			}
+			.lesson__wrapper {
+				display: flex;
+				gap: 50px;
+			}
+			ul li {
+				list-style: none;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 19</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 6</h4>
+						<p>
+							Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два стовпці. В одному
+							відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у список
+							для змагань. При натисканні на червону стрілку спортсмен переміщається у загальний список.
+						</p>
+						<div class="lesson__wrapper"></div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				class Tournament {
+					constructor(allPlayers) {
+						this.allPlayers = allPlayers;
+						this.newArray = [];
+					}
+					render(container) {
+						const wrapperAll = document.createElement("div");
+						wrapperAll.className = `list__wrapper green`;
+						const titleAll = document.createElement("h2");
+						titleAll.innerText = "Загальний список";
+						wrapperAll.append(titleAll);
+						const list = document.createElement("ul");
+						for (let i = 0; i < this.allPlayers.length; i++) {
+							const li = document.createElement("li");
+							const arrow = document.createElement("button");
+							arrow.innerHTML = `<?xml version="1.0" ?><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;}</style></defs><title/><g data-name="Layer 2" id="Layer_2"><path d="M19,26a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42L26.59,16l-8.3-8.29a1,1,0,0,1,1.42-1.42l9,9a1,1,0,0,1,0,1.42l-9,9A1,1,0,0,1,19,26Z"/><path d="M28,17H4a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z"/></g><g id="frame"><rect class="cls-1" height="32" width="32"/></g></svg>`;
+							arrow.onclick = this.chooseSportmens.bind(this);
+							li.innerHTML = `<span>${this.allPlayers[i]}</span>`;
+							li.append(arrow);
+							list.append(li);
+						}
+						wrapperAll.append(list);
+						const wrapperPlayers = document.createElement("div");
+						wrapperPlayers.className = `list__wrapper red`;
+						const titlePlayers = document.createElement("h2");
+						titlePlayers.innerText = "Список учасників";
+						wrapperPlayers.append(titlePlayers);
+						const listPlayers = document.createElement("ul");
+						wrapperPlayers.append(listPlayers);
+						if (container) {
+							document.querySelector(container).append(wrapperAll);
+							document.querySelector(container).append(wrapperPlayers);
+						}
+					}
+					chooseSportmens(e) {
+						const li = e.target.closest("li");
+						const allPlayersList = document.querySelector(".list__wrapper.green ul");
+						const ParticipantsList = document.querySelector(".list__wrapper.red ul");
+						if (li) {
+							let playerName = li.querySelector("span").innerText;
+							if (!this.newArray.includes(playerName)) {
+								this.newArray.push(playerName);
+								ParticipantsList.append(li);
+								this.allPlayers = this.allPlayers.filter((player) => player !== playerName);
+							} else {
+								allPlayersList.append(li);
+								this.allPlayers.push(playerName);
+								this.newArray = this.newArray.filter((player) => player !== playerName);
+							}
+							console.log(this.allPlayers);
+							console.log(this.newArray);
+						}
+						return this.newArray;
+					}
+				}
+
+				let sportmensAll = [
+					"Jonh Deep",
+					"Sara Wilk",
+					"Den Miro",
+					"Alan Woo",
+					"Olga Sich",
+					"Ivan Hal",
+					"Oleh Bubka",
+					"Andrij Schevchenko",
+					"Serhij Rebrov",
+				];
+				let sportsmens = new Tournament(sportmensAll);
+				sportsmens.render(".lesson__wrapper");
+			};
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 19</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 19</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>
+							Задача 2. Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі попередні у спадному
+							порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				class Input {
+					constructor(container) {
+						this.container = container;
+						this.render(this.container);
+					}
+					render(container) {
+						this.input = document.createElement("input");
+						this.input.oninput = this.changeValue.bind(this);
+						if (container) {
+							document.querySelector(container).append(this.input);
+						}
+					}
+					changeValue() {
+						let input = this.input;
+						while (input.previousElementSibling && input.previousElementSibling.nodeName === "INPUT") {
+							let currentValue = input.value;
+							input.previousElementSibling.value = parseInt(currentValue) - 1;
+							input = input.previousElementSibling;
+						}
+						input = this.input;
+						while (input.nextElementSibling && input.nextElementSibling.nodeName === "INPUT") {
+							let currentValue = input.value;
+							input.nextElementSibling.value = parseInt(currentValue) + 1;
+							input = input.nextElementSibling;
+						}
+					}
+				}
+				function createInput() {
+					for (let i = 0; i < 5; i++) {
+						let input = new Input(".lesson__row-1");
+					}
+				}
+				createInput();
+			};
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

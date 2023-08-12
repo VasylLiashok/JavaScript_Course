@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 19</title>
+		<style>
+			table {
+				border: 2px solid #000;
+			}
+			td {
+				border: 1px solid #000;
+				padding: 5px;
+			}
+			th {
+				height: 30px;
+				text-align: center;
+			}
+			.lesson__wrapper {
+				display: flex;
+				gap: 30px;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 19</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+						<p>
+							Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до відповідної таблиці додається
+							червона рамка (спробуйте додати можливість відображення кількості кліків біля назви таблиці з використанням відповідно доданого для
+							цього атрибута).
+						</p>
+					</div>
+					<div class="lesson__wrapper"></div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				class Table {
+					constructor(rows, columns, container, minNum = 0, maxNum = 10) {
+						this.rows = rows;
+						this.columns = columns;
+						this.minNum = minNum;
+						this.maxNum = maxNum;
+						this.container = container;
+						this.render(this.container);
+					}
+					render(container) {
+						const table = document.createElement("table");
+						const tableHeader = document.createElement("th");
+						tableHeader.setAttribute("data-click", 0);
+						table.append(tableHeader);
+						for (let i = 0; i < this.rows; i++) {
+							const row = document.createElement("tr");
+							for (let j = 0; j < this.columns; j++) {
+								const cell = document.createElement("td");
+								cell.innerText = this.getRandomValue(this.minNum, this.maxNum);
+								row.append(cell);
+							}
+							table.append(row);
+						}
+						if (container) {
+							document.querySelector(container).append(table);
+						}
+						table.onclick = this.changeBorder.bind(this);
+					}
+					getRandomValue(minVal, maxVal) {
+						return minVal + Math.floor(Math.random() * (maxVal - minVal + 1));
+					}
+					changeBorder(e) {
+						let target = e.target;
+						if (target.closest("td")) {
+							const currentTable = target.closest("table");
+							const header = currentTable.querySelector("th");
+							let clickCount = header.getAttribute("data-click");
+							clickCount++;
+							header.setAttribute("data-click", clickCount);
+							header.innerText = `${clickCount}`;
+							currentTable.style.border = "2px solid red";
+						}
+					}
+				}
+				function createTables(tableCount) {
+					for (let i = 0; i < tableCount; i++) {
+						let table = new Table(3, 3, ".lesson__wrapper");
+					}
+				}
+				const tableCount = 3;
+				createTables(tableCount);
+			};
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
