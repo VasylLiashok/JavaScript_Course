@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 20</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 20</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>
+							Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки, які їдуть вниз. При кліку на танк він
+							вибухає і зникає з екрану.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				class Tank {
+					constructor(interval, tankSrc, boomSrc) {
+						this.interval = interval;
+						this.tankSrc = tankSrc;
+						this.boomSrc = boomSrc;
+					}
+					getRandomNum(minNum, maxNum) {
+						return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+					}
+					render(container) {
+						const tank = document.createElement("div");
+						const image = document.createElement("img");
+						image.setAttribute("src", this.tankSrc);
+						image.style.width = "100%";
+						image.style.height = "100%";
+						tank.append(image);
+						this.tank = tank;
+						tank.onclick = this.destroyTank.bind(this);
+						if (container) {
+							document.querySelector(container).append(tank);
+						}
+						this.run();
+					}
+					run() {
+						const windowWidth = window.innerWidth;
+						console.log(windowWidth);
+						const windowHeight = window.innerHeight;
+						this.tank.style.cssText = `position: absolute; top: 0; left:${this.getRandomNum(0, windowWidth)}px; width:40px;height:40px`;
+						let step = 0;
+						setInterval(() => {
+							const tankTop = parseInt(this.tank.style.top);
+							step += 1;
+							if (tankTop > windowHeight) {
+								this.tank.remove();
+							} else {
+								this.tank.style.top = step + "px";
+							}
+						}, this.interval);
+					}
+					destroyTank() {
+						const image = this.tank.querySelector("img");
+
+						image.setAttribute("src", this.boomSrc);
+						setTimeout(() => {
+							this.tank.remove();
+						}, 1000);
+					}
+				}
+				function getRandomNum(minNum, maxNum) {
+					return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+				}
+				const tankCount = getRandomNum(15, 45);
+				for (let i = 0; i < tankCount; i++) {
+					let tank = new Tank(getRandomNum(30, 200), "./tank.svg", "./boom.png");
+					tank.render(".lesson");
+				}
+			};
+
+			//=============	===========================================================================================================================================
+		</script>
+	</body>
+</html>

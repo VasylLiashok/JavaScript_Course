@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 20</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 20</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>
+							Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. Кожна зірка (це екземпляр класу Star) з певним
+							кроком і інтервалом збільшується від мінімального до максимального розміру. Як тільки досягнути максимального розміру зірочка повинна
+							з’являтися у іншій випадковій позиції.
+						</p>
+					</div>
+					<div class="stars"></div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+
+			function getRandomNumber(minNum, maxNum) {
+				return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+			}
+			class Star {
+				constructor(maxSize, step, interval, imgSrc) {
+					this.maxSize = maxSize;
+					this.step = step;
+					this.interval = interval;
+					this.imgSrc = imgSrc;
+				}
+				getRandomNumber(minNum, maxNum) {
+					return minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+				}
+				render(container) {
+					const star = document.createElement("div");
+					const image = document.createElement("img");
+					image.setAttribute("src", this.imgSrc);
+					image.style.width = "100%";
+					image.style.height = "100%";
+					star.append(image);
+					const windowHeight = window.innerHeight;
+					const windowWidth = window.innerWidth;
+					const starSize = this.getRandomNumber(5, 40);
+					star.style.cssText = `position:absolute; top: ${this.getRandomNumber(0, windowHeight)}px; left:  ${this.getRandomNumber(
+						0,
+						windowWidth
+					)}px; width: ${starSize}px; height: ${starSize}px`;
+					if (container) {
+						document.querySelector(container).append(star);
+					}
+					this.starGrowth(star, windowHeight, windowWidth);
+				}
+				starGrowth(obj, windowHeight, windowWidth) {
+					setInterval(() => {
+						const objWidth = parseInt(obj.style.width);
+						if (objWidth > this.maxSize) {
+							// obj.style.top = this.getRandomNumber(0, windowHeight)
+							// obj.style.left = this.getRandomNumber(0, windowWidth)
+							const starSize = this.getRandomNumber(5, 30);
+							obj.style.cssText = `position:absolute; top: ${this.getRandomNumber(0, windowHeight)}px; left:  ${this.getRandomNumber(
+								0,
+								windowWidth
+							)}px; width: ${starSize}px; height: ${starSize}px`;
+						} else {
+							obj.style.width = parseInt(obj.style.width) + this.step + "px";
+							obj.style.height = parseInt(obj.style.height) + this.step + "px";
+						}
+					}, this.interval);
+				}
+			}
+			const starCount = 40;
+			for (let star = 0; star < starCount; star++) {
+				let star = new Star(getRandomNumber(40, 100), getRandomNumber(1, 5), getRandomNumber(300, 600), "./star.svg");
+				star.render(".stars");
+			}
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

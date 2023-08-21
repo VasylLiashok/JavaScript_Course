@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 20</title>
+		<style>
+			form {
+				display: flex;
+				gap: 20px;
+				flex-wrap: wrap;
+			}
+			input {
+				flex: 1 1 250px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 20</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 3</h4>
+						<p>
+							На формі вводять 7 числових значень (вік, зріст, вага, заробітна плата, стаж, номер відділу, порядковий номер). Додати подію обробки
+							події click на форму і якщо клік на внутрішньому input, то автоматично замінювати значення його на 0. Використати делегування
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				class Form {
+					constructor(array) {
+						this.array = array;
+					}
+					render(container) {
+						const form = document.createElement("form");
+						for (let i = 0; i < this.array.length; i++) {
+							let input = document.createElement("input");
+							input.setAttribute("type", "number");
+							input.setAttribute("placeholder", this.array[i]);
+							form.append(input);
+						}
+						form.onclick = this.changeValue.bind(this);
+						if (container) {
+							document.querySelector(container).append(form);
+						}
+					}
+					changeValue(e) {
+						if (e.target.tagName === "INPUT") {
+							e.target.value = 0;
+						}
+					}
+				}
+				let inputLabels = ["вік", "зріст", "вага", "заробітна плата", "стаж", "номер відділу", "порядковий номер"];
+				let form = new Form(inputLabels);
+				form.render(".lesson__body");
+			};
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

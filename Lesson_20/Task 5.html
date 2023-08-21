@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 20</title>
+		<style></style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 20</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 5</h4>
+						<p>Динамічний пошук. Є список працівників і поле пошуку. При введенні відображаються усі, які містять вказаний фрагмент</p>
+					</div>
+					<div class="lesson__cards"></div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+
+			window.onload = () => {
+				class Input {
+					constructor(label) {
+						this.label = label;
+					}
+					render(container) {
+						const label = document.createElement("label");
+						label.innerText = this.label;
+						const input = document.createElement("input");
+						input.addEventListener("input", this.findText.bind(this));
+						label.append(input);
+						if (container) {
+							document.querySelector(container).append(label);
+						}
+						this.input = input;
+						this.el = label;
+					}
+					findText() {
+						const filter = new CustomEvent("filterText", {
+							detail: { value: this.input.value },
+						});
+						this.el.dispatchEvent(filter);
+					}
+				}
+				class SearchList {
+					constructor(array) {
+						this.array = array;
+					}
+					render(container) {
+						const list = document.createElement("ul");
+						this.renderList(this.array, list);
+						this.list = list;
+						if (container) {
+							document.querySelector(container).append(list);
+						}
+					}
+					renderList(array, parentElement) {
+						for (let item = 0; item < array.length; item++) {
+							const li = document.createElement("li");
+							li.innerText = array[item];
+							parentElement.append(li);
+						}
+					}
+					showResults(event) {
+						const inputValue = event.detail.value;
+						let newList = this.array.filter((item) => item.toLowerCase().includes(inputValue.toLowerCase()));
+						this.list.innerHTML = "";
+						console.log(this.list);
+						console.log(newList);
+						this.renderList(newList, this.list);
+					}
+				}
+				let names = ["Іван", "Степан", "Ольга", "Ірина", "Інна", "Володимир", "Петро", "Олег", "Олександр", "Остап"];
+				const input = new Input("Введіть текст");
+				input.render(".lesson__cards");
+				const list = new SearchList(names);
+				list.render(".lesson__cards");
+				input.el.addEventListener("filterText", list.showResults.bind(list));
+			};
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

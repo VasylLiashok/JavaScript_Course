@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 20</title>
+		<style>
+			.lesson__wrapper {
+				display: inline-flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 20</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+						<p>
+							На сторінці міститься певна кількість кнопок і інпутів. Підраховувати загальну кількість кліків окремо на кнопках і окремо на інпутах.
+						</p>
+					</div>
+					<div class="lesson__wrapper">
+						<p>Кліки по інпутах - <span class="input__counter">0</span></p>
+						<p>Кліки по кнопках - <span class="button__counter">0</span></p>
+
+						<input autocomplete="off" type="text" name="form[]" data-error="Помилка" placeholder="" class="input" />
+						<input autocomplete="off" type="text" name="form[]" data-error="Помилка" placeholder="" class="input" />
+						<input autocomplete="off" type="text" name="form[]" data-error="Помилка" placeholder="" class="input" />
+						<input autocomplete="off" type="text" name="form[]" data-error="Помилка" placeholder="" class="input" />
+						<input autocomplete="off" type="text" name="form[]" data-error="Помилка" placeholder="" class="input" />
+						<input autocomplete="off" type="text" name="form[]" data-error="Помилка" placeholder="" class="input" />
+						<input autocomplete="off" type="text" name="form[]" data-error="Помилка" placeholder="" class="input" />
+						<button type="submit" class="button">Надіслати</button>
+						<button type="submit" class="button">Надіслати</button>
+						<button type="submit" class="button">Надіслати</button>
+						<button type="submit" class="button">Надіслати</button>
+						<button type="submit" class="button">Надіслати</button>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				window.captureEvents(Event.CLICK);
+				let inputClick = 0;
+				let buttonClick = 0;
+				const inputCounter = document.querySelector(".input__counter");
+				const buttonCounter = document.querySelector(".button__counter");
+				window.onclick = (e) => {
+					if (e.target.tagName === "INPUT") {
+						inputClick++;
+						inputCounter.innerText = inputClick;
+					}
+					if (e.target.tagName === "BUTTON") {
+						buttonClick++;
+						buttonCounter.innerText = buttonClick;
+					}
+				};
+			};
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
