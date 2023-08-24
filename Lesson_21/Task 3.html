@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 21</title>
+		<style>
+			.image {
+				position: absolute;
+				height: 60px;
+				width: 60px;
+			}
+			.image img {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 21</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 3</h4>
+						<p>Розробити Класи</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				class Image {
+					constructor(xPos, yPos, imgSrc, interval, minVal, maxVal) {
+						this.xPos = xPos;
+						this.yPos = yPos;
+						this.imgSrc = imgSrc;
+						this.interval = interval;
+						this.minVal = minVal;
+						this.maxVal = maxVal;
+					}
+					render(container) {
+						const div = document.createElement("div");
+						div.className = "image";
+						const img = document.createElement("img");
+						img.setAttribute("src", this.imgSrc);
+						div.append(img);
+						div.style.top = this.yPos + "px";
+						div.style.left = this.xPos + "px";
+						this.changeImage(div);
+						if (container) {
+							document.querySelector(container).append(div);
+						}
+						return div;
+					}
+					getRandomNum(minVal, maxVal) {
+						return Math.random() * (maxVal - minVal);
+					}
+					changeImage(obj) {
+						setInterval(() => {
+							this.imageUpdate(obj);
+						}, this.interval);
+					}
+					imageUpdate() {}
+				}
+				class House extends Image {
+					constructor(xPos, yPos, imgSrc, interval, minVal, maxVal) {
+						super(xPos, yPos, imgSrc, interval, minVal, maxVal);
+					}
+					imageUpdate(obj) {
+						obj.style.transform = `scale(${this.getRandomNum(this.minVal, this.maxVal)})`;
+					}
+				}
+				class Dog extends Image {
+					constructor(xPos, yPos, imgSrc, interval, minVal, maxVal) {
+						super(xPos, yPos, imgSrc, interval, minVal, maxVal);
+					}
+					imageUpdate(obj) {
+						obj.style.left = `${this.getRandomNum(this.minVal, this.maxVal)}px`;
+					}
+				}
+				class Bird extends Image {
+					constructor(xPos, yPos, imgSrc, interval, minVal, maxVal) {
+						super(xPos, yPos, imgSrc, interval, minVal, maxVal);
+					}
+					imageUpdate(obj) {
+						obj.style.left = `${this.getRandomNum(this.minVal, this.maxVal)}px`;
+						obj.style.top = `${this.getRandomNum(this.minVal, this.maxVal)}px`;
+					}
+				}
+				let house = new House(150, 150, "./house.svg", 1000, 0.2, 2);
+				let dog = new Dog(50, 50, "./dog.svg", 1000, -100, 300);
+				let bird = new Bird(250, 250, "./bird.svg", 1000, -100, 300);
+				house.render(".lesson__body");
+				dog.render(".lesson__body");
+				bird.render(".lesson__body");
+			};
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

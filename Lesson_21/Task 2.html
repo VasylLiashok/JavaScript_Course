@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 21</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 21</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p>
+							Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції Вивести усіх простих клієнтів; Вивести усіх клієнтів
+							GoldenClient; Знати сумарну кількість грошей на рахунку;
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				class Client {
+					constructor(id, name, money) {
+						this.id = id;
+						this.name = name;
+						this.money = money;
+					}
+					addMoney(value) {
+						return (this.money += value);
+					}
+					takeMoney(value) {
+						return (this.money += value);
+					}
+					toString() {
+						return `У користувача ${this.name} з id ${this.id} на рахунку ${this.money}`;
+					}
+				}
+
+				class GoldenClient extends Client {
+					constructor(id, name, money, moneyLimit, creditPercentage) {
+						super(id, name, money);
+						this.moneyLimit = moneyLimit;
+						this.creditPercentage = creditPercentage;
+					}
+					getCreditPenalty(credit) {
+						return credit * this.creditPercentage;
+					}
+					toString() {
+						return `${super.toString()} кредитний ліміт ${this.moneyLimit} відсоток кредитування ${this.creditPercentage * 100}%`;
+					}
+				}
+				class Bank {
+					constructor(clients) {
+						this.clients = clients;
+					}
+
+					getClientType() {
+						let array = [];
+						for (const client of this.clients) {
+							if (!(client instanceof GoldenClient)) {
+								array.push(client);
+							}
+						}
+						return array;
+					}
+					getGoldenClientType() {
+						let array = [];
+						for (const client of this.clients) {
+							if (client instanceof GoldenClient) {
+								array.push(client);
+							}
+						}
+						return array;
+					}
+					getTotalMoney() {
+						return this.clients.reduce((prevSum, client) => client.money + prevSum, 0);
+					}
+				}
+				let clients = [new GoldenClient(123, "ivan", 1222, 2355, 0.1), new Client(456, "petro", 546)];
+				let bank = new Bank(clients);
+				console.log(bank.getClientType());
+				console.log(bank.getGoldenClientType());
+				console.log(bank.getTotalMoney());
+			};
+
+			//=============	===========================================================================================================================================
+		</script>
+	</body>
+</html>

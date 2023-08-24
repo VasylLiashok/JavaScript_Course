@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 21</title>
+		<style>
+			form {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 15px;
+			}
+			input {
+				flex: 0 1 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 21</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 4</h4>
+						<p>
+							Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку (перевіряти чи є числом, чи від
+							1 до 100). Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не останній місяць у семестрі) . Обробку усіх помилок зробити
+							з використанням відповідних класів.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			window.onload = () => {
+				//========================================================================================================================================================
+				class PupilData {
+					constructor(inputCount) {
+						this.inputCount = inputCount;
+					}
+					render(container) {
+						const form = document.createElement("form");
+						for (let i = 1; i <= this.inputCount; i++) {
+							const input = document.createElement("input");
+							input.setAttribute("type", "text");
+							// input.setAttribute("value", 0);
+							input.setAttribute("id", i);
+							if (i === 1) {
+								input.setAttribute("placeholder", "Введіть місяць");
+							}
+							if (i === 2) {
+								input.setAttribute("placeholder", "Введіть оцінку");
+							}
+							form.append(input);
+						}
+						if (container) {
+							document.querySelector(container).append(form);
+						}
+						form.addEventListener("input", this.changeValue.bind(this));
+						this.form = form;
+						return form;
+					}
+					changeValue() {
+						let newValue = new CustomEvent("enterData", {
+							detail: {
+								userData: [...this.form.querySelectorAll("input")].map((input) => input.value),
+							},
+						});
+						this.form.dispatchEvent(newValue);
+					}
+				}
+				//========================================================================================================================================================
+				class NotANumberError extends Error {
+					constructor() {
+						super();
+						this.message = "Це не число";
+						this.name = "NotANumberError";
+					}
+				}
+				class InvalidNumberError extends Error {
+					constructor() {
+						super();
+						this.message = "Це число за межами діапазону";
+						this.name = "InvalidNumberError";
+					}
+				}
+				class HolidayMonthError extends Error {
+					constructor() {
+						super();
+						this.message = "Це канікули";
+						this.name = "HolidayMonthError";
+					}
+				}
+				//========================================================================================================================================================
+
+				class Pupil {
+					#month;
+					#mark;
+					constructor(month = 1, mark = 1) {
+						this.Mark = mark;
+						this.Month = month;
+					}
+					get Month() {
+						return this.#month;
+					}
+					set Month(newMonth) {
+						if (isNaN(newMonth)) throw new NotANumberError();
+						if (newMonth < 1 || newMonth > 12) throw new InvalidNumberError();
+						if (newMonth == 6 || newMonth == 7 || newMonth == 8) throw new HolidayMonthError();
+						this.#month = newMonth;
+					}
+					get Mark() {
+						return this.#mark;
+					}
+					set Mark(newMark) {
+						if (isNaN(newMark)) throw new NotANumberError();
+						if (newMark < 1 || newMark > 100) throw new InvalidNumberError();
+						this.#mark = newMark;
+					}
+					checkData(event) {
+						try {
+							if (document.querySelector(".error")) {
+								document.querySelector(".error").remove();
+							}
+							this.Month = event.detail.userData[0];
+							this.Mark = event.detail.userData[1];
+							let form = event.target;
+							if (!document.querySelector(".success")) {
+								const success = document.createElement("div");
+								success.className = "success";
+								form.append(success);
+							}
+							if ((this.Month != 2 || this.Month != 5 || this.Month != 11) && this.Mark > 40) {
+								form.querySelector(".success").innerText = "Оцінку можна виправити";
+							} else {
+								form.querySelector(".success").innerText = "Оцінку не можна виправити";
+							}
+						} catch (error) {
+							let form = event.target;
+							if (!document.querySelector(".error")) {
+								const err = document.createElement("div");
+								err.className = "error";
+								err.innerText = error.message;
+								form.append(err);
+							} else {
+								const err = document.querySelector(".error");
+								err.innerText = error.message;
+							}
+						}
+					}
+				}
+				let pupilData = new PupilData(2);
+				pupilData.render(".lesson__body");
+				let pupil = new Pupil();
+				pupilData.form.addEventListener("enterData", pupil.checkData.bind(pupil));
+
+				//========================================================================================================================================================
+			};
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

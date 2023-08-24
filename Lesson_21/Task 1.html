@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 21</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 21</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>
+							Створити клас Client Властивості ID ПІБ Кількість грошей на рахунку Методи Додавання грошей Зняття грошей ToString На основі цього класу
+							створити клас GoldenClient Властивості ID ПІБ Кількість грошей на рахунку Ліміт кредитних коштів Відсоток за використання кредитних
+							коштів Методи Додавання грошей Зняття грошей Визначення пені за використання кредитних коштів ToString
+						</p>
+					</div>
+					<div class="stars"></div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			class Client {
+				constructor(id, name, money) {
+					this.id = id;
+					this.name = name;
+					this.money = money;
+				}
+				addMoney(value) {
+					return (this.money += value);
+				}
+				takeMoney(value) {
+					return (this.money += value);
+				}
+				toString() {
+					return `У користувача ${this.name} з id ${this.id} на рахунку ${this.money}`;
+				}
+			}
+
+			class GoldenClient extends Client {
+				constructor(id, name, money, moneyLimit, creditPercentage) {
+					super(id, name, money);
+					this.moneyLimit = moneyLimit;
+					this.creditPercentage = creditPercentage;
+				}
+				getCreditPenalty(credit) {
+					return credit * this.creditPercentage;
+				}
+				toString() {
+					return `${super.toString()} кредитний ліміт ${this.moneyLimit} відсоток кредитування ${this.creditPercentage * 100}%`;
+				}
+			}
+			let client = new GoldenClient(200000, "ivan", 7000000, 10000000, 0.2);
+			document.write(client);
+			client.addMoney(50000);
+
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>
