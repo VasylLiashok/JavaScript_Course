@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 22</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 22</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 1</h4>
+						<p>Визначити привітання у залежності від часу доби (Доброго дня, Доброго ранку, Доброго вечора)</p>
+					</div>
+					<div class="stars"></div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//========================================================================================================================================================
+			let date = new Date();
+
+			function showGreetings(currentDate) {
+				let hour = currentDate.getHours();
+				let message;
+				switch (hour) {
+					case 7:
+					case 8:
+					case 9:
+					case 10:
+					case 11:
+						message = "Доброго ранку";
+						break;
+					case 12:
+					case 13:
+					case 14:
+					case 15:
+					case 16:
+					case 17:
+					case 18:
+						message = "Доброго дня";
+						break;
+					case 19:
+					case 20:
+					case 21:
+					case 22:
+						message = "Доброго вечора";
+						break;
+
+					default:
+						message = "Доброї ночі";
+						break;
+				}
+				return message;
+			}
+			alert(showGreetings(date));
+			//========================================================================================================================================================
+		</script>
+	</body>
+</html>

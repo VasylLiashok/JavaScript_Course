@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<title>Lesson 22</title>
+	</head>
+	<body>
+		<main class="lesson">
+			<div class="lesson__container">
+				<h1 class="lesson__title">Lesson 22</h1>
+				<div class="lesson__body">
+					<div class="lesson__row lesson__row-1">
+						<h4 class="lesson__subtitle">Task 2</h4>
+						<p id="task2">Вивести дату у форматі</p>
+						<p id="task3">Визначити поточну пору року</p>
+						<p id="task4">Вивести назву дня</p>
+						<p id="task5">
+							Користувач вводить дату народження. Визначити, скільки йому повних років.
+							<br />
+							<input id="age-input" type="date" value="1992-01-26" />
+						</p>
+						<p id="task6">Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.</p>
+						<p id="task7">Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення.</p>
+						<p id="task8">Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для розв’язання задачі.</p>
+						<p id="task10">
+							Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він придатним на даний момент.
+							<input id="jogurt" type="date" />
+							<input id="time" type="number" />
+						</p>
+						<p id="task12">Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і вставкою.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			"use strict";
+			//========================================================================================================================================================
+			window.onload = () => {
+				let date = new Date();
+				function showDate1(currentDate) {
+					let time = {
+						month: currentDate.getMonth(),
+						year: currentDate.getFullYear(),
+						day: currentDate.getDay(),
+					};
+					return time;
+				}
+				//========================================================================================================================================================
+				const task2 = document.querySelector("#task2");
+				if (task2) {
+					let day = showDate1(date).day === 6 || showDate1(date).day === 0 ? "Вихідний" : "Робочий";
+					task2.innerHTML += `</br>Місяць - ${showDate1(date).month + 1} Рік - ${showDate1(date).year}  День - ${day}`;
+				}
+				function getSeason(currentDate) {
+					let month = currentDate.getMonth();
+					let season;
+					switch (month) {
+						case 0:
+						case 1:
+						case 11:
+							season = "Зима";
+							break;
+						case 2:
+						case 3:
+						case 4:
+							season = "Весна";
+						case 5:
+						case 6:
+						case 7:
+							season = "Літо";
+							break;
+						case 8:
+						case 9:
+						case 10:
+							season = "Осінь";
+							break;
+						default:
+							season = "Невірна пора року";
+							break;
+					}
+					return season;
+				}
+				//========================================================================================================================================================
+				const task3 = document.querySelector("#task3");
+				if (task3) {
+					task3.innerHTML += `</br>Поточна пора року - ${getSeason(date)}`;
+				}
+				//========================================================================================================================================================
+				const task4 = document.querySelector("#task4");
+				function getDayName(currentDate, locale) {
+					return currentDate.toLocaleDateString(locale, { weekday: "long" });
+				}
+				if (task4) {
+					task4.innerHTML += `</br>Поточний день - ${getDayName(date, "uk-UA")}`;
+				}
+				//========================================================================================================================================================
+				const task5 = document.querySelector("#task5");
+				function getAge(currentDate, birthDate) {
+					let birthArray = birthDate.split("-");
+					let birthDay = new Date(birthArray[0], birthArray[1] - 1, birthArray[2]);
+					// console.log(birthDay);
+					let date = (currentDate - birthDay) / 1000 / 3600 / 24 / 365;
+					return date;
+				}
+
+				if (task5) {
+					const ageInput = document.getElementById("age-input");
+					ageInput.addEventListener("blur", function (e) {
+						task5.innerHTML += `</br>Повних років - ${Math.floor(getAge(date, ageInput.value))}`;
+					});
+				}
+				//========================================================================================================================================================
+				const task6 = document.querySelector("#task6");
+				const vacationTime = 56;
+				function getVacationEnd(currentDate, time) {
+					currentDate.setDate(currentDate.getDate() + time);
+					return currentDate;
+				}
+				if (task6) {
+					task6.innerHTML += `</br>Через ${vacationTime} днів буде - ${getVacationEnd(date, vacationTime).toLocaleDateString()}`;
+				}
+				//========================================================================================================================================================
+				const task7 = document.querySelector("#task7");
+				const carRentTime = 56;
+				function getRentTimeReturn(currentDate, time) {
+					currentDate.setHours(currentDate.getHours() + time);
+					return currentDate;
+				}
+				if (task7) {
+					task7.innerHTML += `</br>Через ${carRentTime} годин буде - ${getRentTimeReturn(date, carRentTime)}`;
+				}
+				//========================================================================================================================================================
+				const task8 = document.querySelector("#task8");
+				function getRandomNum() {
+					return Math.floor(Math.random() * 40);
+				}
+
+				function getTask() {
+					let num1 = getRandomNum();
+					let num2 = getRandomNum();
+					let userAnswer = parseInt(prompt(`Вкажіть суму ${num1} + ${num2}`));
+				}
+				function getResultTime() {
+					let startTime = new Date();
+					getTask();
+
+					let endTime = new Date();
+					return (endTime - startTime) / 1000;
+				}
+				if (task8) {
+					task8.innerHTML += `</br>Час (в секундах) на вирішення задачі - ${getResultTime()}`;
+				}
+				//========================================================================================================================================================
+				const task10 = document.querySelector("#task10");
+				const jogurtInput = document.getElementById("jogurt");
+				const time = document.getElementById("time");
+				time.addEventListener("change", function (e) {
+					if (jogurtInput.value != "" && time.value != "") {
+						let jogurtInputValue = jogurtInput.value;
+						let timeValue = parseInt(time.value);
+						let today = new Date();
+						let jogurtDate = jogurtInputValue.split("-");
+						let jogurtProductionDate = new Date(jogurtDate[0], jogurtDate[1] - 1, jogurtDate[2]);
+						let jogurtUsability = jogurtProductionDate.setDate(jogurtProductionDate.getDate() + timeValue);
+						if (jogurtUsability > today) {
+							task10.innerHTML += `</br>Цей йогурт сьогодні можна їсти `;
+						} else {
+							task10.innerHTML += `</br>Цей йогурт сьогодні не можна їсти `;
+						}
+					}
+				});
+				//========================================================================================================================================================
+				const task12 = document.querySelector("#task12");
+				function getRandomNumber(min, max) {
+					return min + Math.floor(Math.random() * (max - min + 1));
+				}
+				function createArray(arrayLength) {
+					let arr = [];
+					for (let i = 0; i < arrayLength; i++) {
+						arr.push(getRandomNumber(1, 800));
+					}
+					return arr;
+				}
+				let numArray = createArray(1000);
+				let numArray2 = [...numArray];
+
+				function getTime(func, arr) {
+					let startTime = new Date();
+					func(arr);
+					let endTime = new Date();
+					return endTime - startTime;
+				}
+				function bubleSort(arr) {
+					let changed;
+					do {
+						changed = false;
+						for (let i = 1; i < arr.length; i++) {
+							if (arr[i - 1] > arr[i]) {
+								let tmp = arr[i - 1];
+								arr[i - 1] = arr[i];
+								arr[i] = tmp;
+								changed = true;
+							}
+						}
+					} while (changed);
+				}
+				function includeSort(arr) {
+					for (let k = 0; k < arr.length; k++) {
+						const currentElement = arr[k];
+						let i = k - 1;
+						while (i >= 0 && arr[i] > currentElement) {
+							arr[i + 1] = arr[i];
+							i = i - 1;
+						}
+						arr[i + 1] = currentElement;
+					}
+				}
+				let bubble = getTime(bubleSort, numArray);
+				let include = getTime(includeSort, numArray2);
+				if (task12) {
+					task12.innerHTML += `</br>Час на обчислення методом бульбашки ${bubble}мс, Час на обчислення методом включення - ${include}мс`;
+				}
+			};
+			//========================================================================================================================================================
+
+			//=============	===========================================================================================================================================
+		</script>
+	</body>
+</html>
